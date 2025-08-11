@@ -1,0 +1,302 @@
+import { Accordion, CodeGroup, Info, Warning } from '../../components/MDXComponents.mdx'
+
+# Moderation Commands
+
+Comprehensive moderation tools with AI-powered analysis and automated logging.
+
+<Info>
+All moderation actions are automatically analyzed by viAI and reflected in user profiles accessible via `=userinfo`.
+</Info>
+
+## Core Moderation
+
+<Accordion title="Warning System">
+**Command:** `=warn <userID> <reason>`  
+**Cooldown:** 5 seconds  
+**Permissions:** Manage Messages  
+
+Issue warnings to users with AI analysis for escalation patterns.
+
+<CodeGroup>
+
+```bash Usage
+=warn 123456789012345678 Inappropriate language in chat
+=warn 987654321098765432 Spam in general channel
+```
+
+```bash Features
+• AI-powered reason analysis
+• Automatic escalation detection
+• Moderation log integration
+• User case building
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Timeout Management">
+**Command:** `=timeout <user> <duration> [reason]`  
+**Cooldown:** 5 seconds  
+**Permissions:** Moderate Members  
+
+Temporarily mute users with automatic duration parsing.
+
+<CodeGroup>
+
+```bash Usage
+=timeout @user 1h Disruptive behavior
+=timeout 123456789 30m Spam
+=timeout @user 1d Serious violation
+```
+
+```bash Duration Formats
+• 1m, 5m, 30m (minutes)
+• 1h, 2h, 12h (hours) 
+• 1d, 3d, 7d (days)
+• Maximum: 28 days
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Ban & Kick">
+**Commands:** `=ban <user> [reason]` | `=kick <user> [reason]`  
+**Cooldown:** 10 seconds  
+**Permissions:** Ban Members / Kick Members  
+
+<CodeGroup>
+
+```bash Ban Usage
+=ban @user Repeated violations
+=ban 123456789 Malicious behavior
+```
+
+```bash Kick Usage
+=kick @user Minor infraction
+=kick 123456789 First offense
+```
+
+</CodeGroup>
+</Accordion>
+
+## Advanced Moderation
+
+<Accordion title="Forced Nicknames">
+**Command:** `=forcename <user> [nickname]`  
+**Aliases:** `fn`, `force-nickname`, `locknick`  
+**Cooldown:** 3 seconds  
+**Permissions:** Manage Nicknames  
+
+Lock user nicknames per guild with automatic enforcement.
+
+<CodeGroup>
+
+```bash Usage
+=forcename @user AppropriateNick
+=forcename @user (removes forced nickname)
+=fn 123456789 CleanNickname
+```
+
+```bash Features
+• Per-guild nickname enforcement
+• Automatic revert on change attempts
+• Name history tracking
+• Role hierarchy respect
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Channel Management">
+**Commands:** `=lock <channel>` | `=unlock <channel>` | `=hide <channel>` | `=unhide <channel>`  
+**Permissions:** Manage Channels  
+
+<CodeGroup>
+
+```bash Channel Controls
+=lock #general
+=unlock #general
+=hide #staff-chat
+=unhide #staff-chat
+```
+
+```bash Slowmode
+=slowmode #channel 5s
+=slowmode #channel 30m
+=slowmode #channel off
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Message Management">
+**Commands:** `=purge <amount> [user]` | `=snipe [channel]` | `=clearsnipes`  
+**Permissions:** Manage Messages  
+
+<CodeGroup>
+
+```bash Purge Messages
+=purge 10
+=purge 50 @user
+=purge 100 123456789
+```
+
+```bash Snipe Deleted Messages
+=snipe
+=snipe #channel
+=clearsnipes
+```
+
+</CodeGroup>
+</Accordion>
+
+## Quarantine & Jail System
+
+<Accordion title="Quarantine System">
+**Commands:** `=quarantine <user> [reason]` | `=unquarantine <user>`  
+**Setup:** `=jailsetup`  
+**Permissions:** Moderate Members  
+
+Isolate disruptive users while preserving their roles.
+
+<CodeGroup>
+
+```bash Usage
+=quarantine @user Under investigation
+=unquarantine @user
+=jailsetup (configure quarantine role & channel)
+```
+
+```bash Features
+• Role preservation during quarantine
+• Automated logging and tracking
+• Time-based auto-release options
+• Appeal system integration
+```
+
+</CodeGroup>
+</Accordion>
+
+## User Information & History
+
+<Accordion title="User Analysis">
+**Commands:** `=userinfo <user>` | `=warns <user>` | `=unwarn <user> <warnID>`  
+**Premium:** Gold+ for advanced features  
+
+<CodeGroup>
+
+```bash User Information
+=userinfo @user
+=userinfo 123456789012345678
+=warns @user
+=unwarn @user 12345
+```
+
+```bash Analysis Features
+• AI-powered risk assessment
+• Moderation history timeline
+• Premium status and verification
+• Cross-server reputation (if available)
+```
+
+</CodeGroup>
+</Accordion>
+
+## Role & Permission Management
+
+<Accordion title="Role Commands">
+**Command:** `=role <user> <role> [add/remove]`  
+**Permissions:** Manage Roles  
+
+<CodeGroup>
+
+```bash Role Management
+=role @user "Verified" add
+=role @user "Muted" remove
+=role 123456789 "VIP" add
+```
+
+```bash Features
+• Bulk role operations
+• Role hierarchy validation
+• Audit logging
+• Permission conflict detection
+```
+
+</CodeGroup>
+</Accordion>
+
+## Content Filtering
+
+<Accordion title="Filter System">
+**Command:** `=filter <add/remove/list> [word/phrase]`  
+**Permissions:** Manage Messages  
+
+<CodeGroup>
+
+```bash Filter Management
+=filter add badword
+=filter remove oldword
+=filter list
+```
+
+```bash Auto-Moderation
+• Smart context detection
+• False positive reduction
+• Bypass role configuration
+• Action escalation rules
+```
+
+</CodeGroup>
+</Accordion>
+
+## Report System
+
+<Accordion title="User Reports">
+**Command:** `=report <user> <reason>`  
+**Cooldown:** 30 seconds  
+
+<CodeGroup>
+
+```bash Reporting
+=report @user Harassment in DMs
+=report 123456789 Suspicious behavior
+```
+
+```bash Features
+• Anonymous reporting options
+• AI threat assessment
+• Auto-escalation for severe cases
+• Moderator notification system
+```
+
+</CodeGroup>
+
+<Warning>
+Reports involving potential doxxing, threats, or illegal content are automatically escalated to administrators.
+</Warning>
+</Accordion>
+
+## Command Restrictions
+
+<Accordion title="Command Management">
+**Command:** `=command <enable/disable> <command_name>`  
+**Permissions:** Administrator  
+
+<CodeGroup>
+
+```bash Command Control
+=command disable userinfo
+=command enable translate
+=command disable viai
+```
+
+```bash Features
+• Per-server command toggles
+• Category-wide restrictions
+• Premium command management
+• Bypass permissions for staff
+```
+
+</CodeGroup>
+</Accordion>

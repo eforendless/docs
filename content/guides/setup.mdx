@@ -1,0 +1,486 @@
+import { Accordion, CodeGroup, Info, Warning } from '../../components/MDXComponents.mdx'
+
+# Setup & Configuration Guide
+
+Complete setup guide for configuring the Velveta Discord Bot in your server with all features and systems.
+
+<Info>
+This guide covers initial setup, configuration options, and best practices for optimal bot performance and security.
+</Info>
+
+## Initial Setup
+
+<Accordion title="Bot Invitation & Permissions">
+**Required Permissions:**
+- Send Messages
+- Embed Links  
+- Manage Messages
+- Manage Roles
+- Read Message History
+- Use Slash Commands
+- Manage Webhooks (for verification)
+
+<CodeGroup>
+
+```bash Invitation Process
+1. Use bot invitation link with required permissions
+2. Select target server (Manage Server permission required)
+3. Review and confirm permission requests
+4. Complete OAuth2 authorization
+5. Bot will join and initialize basic settings
+```
+
+```bash Initial Permissions Setup
+• Ensure bot role is above managed roles
+• Grant required permissions in target channels
+• Configure role hierarchy properly
+• Test basic functionality with =ping
+```
+
+</CodeGroup>
+
+<Warning>
+Insufficient permissions will cause command failures. Ensure the bot role has adequate permissions and proper hierarchy placement.
+</Warning>
+</Accordion>
+
+## Core Configuration
+
+<Accordion title="Basic Server Settings">
+Configure fundamental bot settings for your server:
+
+<CodeGroup>
+
+```bash Essential Configuration
+• Set moderation log channel
+• Configure verification system
+• Set up welcome/farewell channels
+• Configure role assignments
+• Set prefix preferences (= default)
+```
+
+```bash Configuration Commands
+=config set prefix !
+=config set modlog #mod-logs
+=config set verification enable
+=config set welcome #welcome
+=config set farewell #farewells
+```
+
+</CodeGroup>
+
+<Info>
+Basic configuration is required before advanced features like AI moderation and premium embeds will function properly.
+</Info>
+</Accordion>
+
+<Accordion title="Role Configuration">
+**Automated Role Management:**
+
+<CodeGroup>
+
+```bash Role Setup Requirements
+• Create verified role (for verification system)
+• Set up moderation roles (for staff)
+• Configure premium roles (optional)
+• Set auto-role assignments
+• Configure role hierarchy
+```
+
+```bash Role Configuration Examples
+=role create verified "Verified Members"
+=role assign @everyone unverified
+=role hierarchy configure
+=role auto-assign verified after-verification
+```
+
+</CodeGroup>
+</Accordion>
+
+## Moderation System Setup
+
+<Accordion title="Moderation Configuration">
+**Complete Moderation Setup:**
+
+<CodeGroup>
+
+```bash Moderation Features
+• Warning system with AI analysis
+• Automated timeout management
+• Ban/kick with case tracking
+• Forced nickname system
+• Channel management tools
+```
+
+```bash Configuration Steps
+1. Set moderation log channel
+2. Configure staff roles and permissions
+3. Set up automated responses
+4. Configure case tracking
+5. Test moderation commands
+```
+
+</CodeGroup>
+
+### AI-Powered Moderation
+
+<Accordion title="viAI Integration">
+The moderation system includes AI-powered case analysis:
+
+<CodeGroup>
+
+```bash AI Features
+• Automatic warning analysis
+• Context-aware risk assessment
+• Pattern recognition for repeat offenders
+• Suggested moderation actions
+• Cross-server reputation tracking
+```
+
+```bash Setup Requirements
+• Premium tier recommended for full AI features
+• Configure AI analysis preferences
+• Set automated response thresholds
+• Review and adjust AI suggestions
+```
+
+</CodeGroup>
+</Accordion>
+</Accordion>
+
+## Verification System Setup
+
+<Accordion title="Verification Configuration">
+**Comprehensive Verification Setup:**
+
+<CodeGroup>
+
+```bash Verification Requirements
+• External verification website integration
+• CAPTCHA and fraud protection
+• Role-based access control
+• Cross-server passport system
+• Security monitoring
+```
+
+```bash Setup Process
+1. Enable verification system
+2. Configure verification channel
+3. Set verified/unverified roles
+4. Configure welcome integration
+5. Test verification flow
+```
+
+</CodeGroup>
+
+### Security Features
+
+<Accordion title="Advanced Security">
+Configure enhanced security features:
+
+<CodeGroup>
+
+```bash Security Options
+• VPN/proxy detection
+• Account age requirements
+• IP-based restrictions
+• Rate limiting configuration
+• Suspicious activity monitoring
+```
+
+```bash Security Configuration
+=verification security vpn-detection enable
+=verification security min-age 7d
+=verification security rate-limit 3/hour
+=verification security monitoring enable
+```
+
+</CodeGroup>
+</Accordion>
+</Accordion>
+
+## Premium Features Setup
+
+<Accordion title="Premium Configuration">
+**Premium Tier Setup:**
+
+<CodeGroup>
+
+```bash Premium Features
+• Advanced embed system
+• Enhanced AI capabilities
+• Welcome/farewell automation
+• Booster recognition
+• Priority support access
+```
+
+```bash Premium Configuration
+1. Activate premium tier
+2. Configure enhanced features
+3. Set up embed templates
+4. Configure automation rules
+5. Test premium functionality
+```
+
+</CodeGroup>
+
+### Embed System Configuration
+
+<Accordion title="Advanced Embed Setup">
+Configure the premium embed system:
+
+<CodeGroup>
+
+```bash Embed Features
+• Template management
+• Variable substitution
+• Auto-reply integration
+• Reaction automation
+• Custom styling options
+```
+
+```bash Embed Configuration
+=embed template create welcome
+=embed auto-reply configure
+=embed reactions setup
+=embed variables test
+=embed quota check
+```
+
+</CodeGroup>
+</Accordion>
+</Accordion>
+
+## Integration Setup
+
+<Accordion title="Webhook Configuration">
+**External Integration Setup:**
+
+<CodeGroup>
+
+```bash Webhook Features
+• Verification completion notifications
+• Moderation action logging
+• Premium status updates
+• Security alerts
+• Custom integrations
+```
+
+```bash Webhook Setup
+1. Configure webhook endpoints
+2. Set authentication tokens
+3. Test webhook delivery
+4. Monitor webhook status
+5. Set up fallback mechanisms
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="API Integration">
+**External API Configuration:**
+
+<CodeGroup>
+
+```bash API Integrations
+• OpenAI for AI features
+• Verification service API
+• Premium billing integration
+• Analytics and monitoring
+• Third-party services
+```
+
+```bash API Setup Requirements
+• Obtain necessary API keys
+• Configure rate limiting
+• Set up monitoring
+• Test API connectivity
+• Configure fallback options
+```
+
+</CodeGroup>
+</Accordion>
+
+## Channel Configuration
+
+<Accordion title="Channel Setup Guide">
+**Recommended Channel Structure:**
+
+<CodeGroup>
+
+```bash Essential Channels
+#verification - User verification
+#mod-logs - Moderation logging
+#welcome - New member welcomes
+#farewells - Member departure messages
+#announcements - Server announcements
+```
+
+```bash Optional Channels
+#premium-info - Premium features info
+#bot-commands - Bot command usage
+#appeals - Moderation appeals
+#support - User support
+#booster-thanks - Booster recognition
+```
+
+</CodeGroup>
+
+### Channel Permissions
+
+<Accordion title="Permission Configuration">
+Configure appropriate permissions for each channel:
+
+<CodeGroup>
+
+```bash Verification Channel
+• @everyone: Read Messages, Send Messages
+• Unverified: Send Messages (verification command only)
+• Bot: Full permissions
+• Staff: Manage Messages
+```
+
+```bash Moderation Logs
+• @everyone: No access
+• Staff: Read Messages
+• Bot: Send Messages, Embed Links
+• Admins: Full permissions
+```
+
+</CodeGroup>
+</Accordion>
+</Accordion>
+
+## Testing & Validation
+
+<Accordion title="Setup Testing">
+**Comprehensive Testing Checklist:**
+
+<CodeGroup>
+
+```bash Basic Functionality
+✓ Bot responds to commands
+✓ Permissions are working
+✓ Logging is functional
+✓ Roles are assignable
+✓ Messages send properly
+```
+
+```bash Advanced Features
+✓ Verification flow works
+✓ Moderation commands function
+✓ AI analysis is working
+✓ Embeds display correctly
+✓ Webhooks are delivering
+```
+
+</CodeGroup>
+
+### Test Commands
+
+<Accordion title="Testing Commands">
+Use these commands to validate setup:
+
+<CodeGroup>
+
+```bash Basic Tests
+=ping - Check bot responsiveness
+=help - Verify command accessibility
+=serverinfo - Test embed functionality
+=userinfo @user - Test user analysis
+```
+
+```bash Advanced Tests
+=verify - Test verification system
+=warn @user test - Test moderation system
+=embed create test - Test embed system
+=viai hello - Test AI functionality
+```
+
+</CodeGroup>
+</Accordion>
+</Accordion>
+
+## Maintenance & Updates
+
+<Accordion title="Ongoing Maintenance">
+**Regular Maintenance Tasks:**
+
+<CodeGroup>
+
+```bash Weekly Tasks
+• Review moderation logs
+• Check verification statistics
+• Monitor AI usage metrics
+• Update embed templates
+• Review security alerts
+```
+
+```bash Monthly Tasks
+• Database cleanup
+• Permission audits
+• Feature usage analysis
+• Performance monitoring
+• Update configurations
+```
+
+</CodeGroup>
+</Accordion>
+
+## Troubleshooting
+
+<Accordion title="Common Setup Issues">
+**Frequent Problems and Solutions:**
+
+<CodeGroup>
+
+```bash Permission Issues
+Problem: Commands not working
+Solution: Check bot role hierarchy and permissions
+
+Problem: Cannot assign roles
+Solution: Ensure bot role is above target roles
+
+Problem: Missing embeds
+Solution: Grant "Embed Links" permission
+```
+
+```bash Configuration Issues
+Problem: Verification not working
+Solution: Check webhook configuration and external service
+
+Problem: AI features unavailable
+Solution: Verify premium status and API keys
+
+Problem: Logs not appearing
+Solution: Confirm log channel setup and permissions
+```
+
+</CodeGroup>
+</Accordion>
+
+## Best Practices
+
+<Accordion title="Configuration Best Practices">
+**Recommended Practices for Optimal Performance:**
+
+<CodeGroup>
+
+```bash Security Best Practices
+• Regular permission audits
+• Monitor verification attempts
+• Review moderation logs daily
+• Keep configurations updated
+• Test features after changes
+```
+
+```bash Performance Optimization
+• Use dedicated channels for bot activities
+• Configure appropriate rate limits
+• Monitor resource usage
+• Optimize role hierarchy
+• Regular maintenance schedules
+```
+
+</CodeGroup>
+</Accordion>

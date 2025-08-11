@@ -1,0 +1,249 @@
+import { Accordion, CodeGroup, Info, Warning } from '../../components/MDXComponents.mdx'
+
+# Information Commands
+
+Comprehensive server and user information utilities with advanced search and analysis features.
+
+## Server Information
+
+<Accordion title="Server Overview">
+**Command:** `=serverinfo`  
+**Cooldown:** 5 seconds  
+**Permissions:** None  
+
+Get detailed server statistics and information.
+
+<CodeGroup>
+
+```bash Usage
+=serverinfo
+```
+
+```bash Information Includes
+• Server owner and creation date
+• Member counts (total, humans, bots)
+• Channel counts by type
+• Boost level and boost count
+• Server verification level
+• Shard information
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Member Statistics">
+**Command:** `=membercount`  
+**Cooldown:** 10 seconds  
+**Permissions:** None  
+
+<CodeGroup>
+
+```bash Usage
+=membercount
+```
+
+```bash Statistics
+• Total member count
+• Online/offline breakdown
+• Role distribution
+• Join/leave trends (premium)
+• Activity patterns (premium)
+```
+
+</CodeGroup>
+</Accordion>
+
+## User Information
+
+<Accordion title="Name History Tracking">
+**Commands:** `=names <user>` | `=clearnames <user>`  
+**Permissions:** None / Manage Nicknames  
+
+Track username and nickname changes per guild.
+
+<CodeGroup>
+
+```bash View History
+=names @user
+=names 123456789012345678
+```
+
+```bash Clear History (Moderators)
+=clearnames @user
+=clearnames 123456789
+```
+
+</CodeGroup>
+
+<Info>
+Name history is tracked per guild for nicknames and globally for usernames.
+</Info>
+</Accordion>
+
+<Accordion title="Verification Passport">
+**Command:** `=passport [user]`  
+**Cooldown:** 10 seconds  
+**Permissions:** None  
+
+View global verification status and premium information.
+
+<CodeGroup>
+
+```bash Usage
+=passport
+=passport @user
+=passport 123456789012345678
+```
+
+```bash Passport Information
+• Verification status and method
+• Premium tier and features
+• Warning count across servers
+• Account creation date
+• Verified guilds list
+```
+
+</CodeGroup>
+</Accordion>
+
+## Role & Member Management
+
+<Accordion title="Role Member Lists">
+**Command:** `=inrole <role>`  
+**Cooldown:** 15 seconds  
+**Permissions:** None  
+
+List all members with a specific role, with pagination and search.
+
+<CodeGroup>
+
+```bash Usage
+=inrole @Moderator
+=inrole "VIP Members"
+=inrole 123456789012345678
+```
+
+```bash Search Features
+• Fuzzy role name matching
+• Member count display
+• Paginated results (10 per page)
+• Jump to specific pages
+• Role hierarchy information
+```
+
+</CodeGroup>
+</Accordion>
+
+## Utilities
+
+<Accordion title="Google Search">
+**Command:** `=google <query>`  
+**Cooldown:** 10 seconds  
+**Permissions:** None  
+
+Search the web with paginated results and quick navigation.
+
+<CodeGroup>
+
+```bash Usage
+=google Discord bot development
+=google "Minecraft server setup"
+=google JavaScript tutorials
+```
+
+```bash Features
+• 10 results per page
+• Title, snippet, and URL display
+• Page jump modal
+• Safe search enabled
+• Click tracking (anonymous)
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Time Zone Management">
+**Commands:** `=timezone [set/list/compare] [args]`  
+**Cooldown:** 5 seconds  
+**Permissions:** None  
+
+Manage and compare user time zones across the server.
+
+<CodeGroup>
+
+```bash Set Your Timezone
+=timezone set Europe/London
+=timezone set America/New_York
+=timezone set Asia/Tokyo
+```
+
+```bash List Server Timezones
+=timezone list
+=timezone list 2
+```
+
+```bash Compare Times
+=timezone compare @user1 @user2
+```
+
+</CodeGroup>
+
+<Info>
+Timezone data is stored per-user and displayed in server lists only for guild members.
+</Info>
+</Accordion>
+
+<Accordion title="AI Translation">
+**Command:** `=translate <text>`  
+**Cooldown:** 10 seconds  
+**Premium:** Uses AI tokens  
+**Permissions:** None  
+
+Translate text using viAI with automatic language detection.
+
+<CodeGroup>
+
+```bash Usage
+=translate Hello, how are you?
+=translate "Bonjour, comment allez-vous?"
+=translate 你好吗？
+```
+
+```bash Features
+• Automatic source language detection
+• Translation to English (default)
+• Confidence scoring
+• Brief explanation of translation choices
+• Token usage tracking
+```
+
+</CodeGroup>
+</Accordion>
+
+## Self-Service Commands
+
+<Accordion title="Clear Own Data">
+**Command:** `=clearself <messages/warnings>`  
+**Cooldown:** 60 seconds  
+**Permissions:** None  
+
+<CodeGroup>
+
+```bash Usage
+=clearself messages
+=clearself warnings
+```
+
+```bash Data Cleared
+• Personal message history (if tracked)
+• Minor warnings (serious warnings preserved)
+• Cache entries and temporary data
+• Search history and preferences
+```
+
+</CodeGroup>
+
+<Warning>
+Major infractions and permanent records cannot be self-cleared and require moderator intervention.
+</Warning>
+</Accordion>

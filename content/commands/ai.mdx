@@ -1,0 +1,254 @@
+import { Accordion, CodeGroup, Info, Warning } from '../../components/MDXComponents.mdx'
+
+# AI Commands & Integration
+
+Velveta integrates advanced AI capabilities through viAI for text generation, image creation, translation, and automated moderation analysis.
+
+<Info>
+All AI features use the viAI model and consume tokens based on your premium tier. View usage with `/tokens`.
+</Info>
+
+## Text Generation & Chat
+
+<Accordion title="viAI Chat (Slash)">
+**Command:** `/viai <prompt>`  
+**Integration:** Guild (0), Bot DM (1), Private Channel (2)  
+**Cooldown:** 10 seconds  
+**Premium:** Token-based usage  
+
+Advanced AI chat with context-aware responses and premium features.
+
+<CodeGroup>
+
+```bash Usage
+/viai What is the best way to moderate a Discord server?
+/viai Explain quantum computing in simple terms
+/viai Write a poem about coding
+```
+
+```bash Features
+• Context-aware conversations
+• Premium tier token limits
+• Rich embed responses
+• Usage tracking and analytics
+• Multi-language support
+```
+
+</CodeGroup>
+
+<Warning>
+Token limits per request: Free (200), Gold (500), Platinum (1000), Diamond (2000)
+</Warning>
+</Accordion>
+
+<Accordion title="viAI Chat (Prefix)">
+**Command:** `=viai <prompt>`  
+**Cooldown:** 10 seconds  
+**Premium:** Token-based usage  
+**Category:** AI  
+
+<CodeGroup>
+
+```bash Usage
+=viai How do I set up a Discord bot?
+=viai Explain the difference between async and sync programming
+=viai Generate a creative story about a space adventure
+```
+
+```bash Tier Benefits
+• Free: 200 tokens/request, basic features
+• Gold: 500 tokens/request, enhanced responses
+• Platinum: 1000 tokens/request, priority processing
+• Diamond: 2000 tokens/request, advanced features
+```
+
+</CodeGroup>
+</Accordion>
+
+## Image Generation
+
+<Accordion title="Image Creation">
+**Command:** `/generate <prompt> [private]`  
+**Cooldown:** 30 seconds  
+**Premium:** Gold+ required  
+**Integration:** Guild (0), Bot DM (1), Private Channel (2)  
+
+Generate high-quality images using advanced AI models.
+
+<CodeGroup>
+
+```bash Usage
+/generate A majestic dragon flying over a medieval castle
+/generate Cute cartoon cat wearing a wizard hat private:true
+/generate Cyberpunk cityscape at night with neon lights
+```
+
+```bash Token Costs
+• Gold: 1000 tokens per image
+• Platinum: 800 tokens per image  
+• Diamond: 600 tokens per image
+• Higher tiers = better quality & speed
+```
+
+</CodeGroup>
+
+<Info>
+Images are generated at 1024x1024 resolution with advanced prompt interpretation and style consistency.
+</Info>
+</Accordion>
+
+<Accordion title="Prefix Generation">
+**Command:** `=generate <prompt>`  
+**Cooldown:** 30 seconds  
+**Premium:** Gold+ required  
+
+<CodeGroup>
+
+```bash Usage
+=generate A serene mountain landscape at sunset
+=generate Portrait of a wise elderly wizard
+=generate Modern minimalist logo design
+```
+
+```bash Advanced Features
+• Style consistency across generations
+• Negative prompt support
+• Aspect ratio options (premium)
+• Batch generation (diamond)
+```
+
+</CodeGroup>
+</Accordion>
+
+## Translation Services
+
+<Accordion title="Smart Translation">
+**Command:** `=translate <text>`  
+**Cooldown:** 10 seconds  
+**Premium:** Uses AI tokens  
+
+AI-powered translation with context awareness and explanation.
+
+<CodeGroup>
+
+```bash Usage
+=translate "Bonjour, comment allez-vous?"
+=translate 你好，你好吗？
+=translate "Wie geht es dir heute?"
+```
+
+```bash Features
+• Automatic language detection
+• Context-aware translation
+• Cultural nuance preservation
+• Confidence scoring
+• Brief explanation of choices
+```
+
+</CodeGroup>
+</Accordion>
+
+## Token Management
+
+<Accordion title="Token Status">
+**Command:** `/tokens`  
+**Cooldown:** 5 seconds  
+**Integration:** Guild (0), Bot DM (1), Private Channel (2)  
+
+View detailed AI token usage, limits, and tier information.
+
+<CodeGroup>
+
+```bash Token Information
+Daily usage and remaining tokens
+Tier-specific limits and features
+Reset time (midnight UTC)
+Available AI features
+```
+
+```bash Tier Comparison
+Free: Premium required for AI access
+Gold: 3,000 tokens/day, 500/request
+Platinum: 7,000 tokens/day, 1,000/request  
+Diamond: 15,000 tokens/day, 2,000/request
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Premium Features">
+**Command:** `/premium [status/features]`  
+**Cooldown:** 10 seconds  
+
+<CodeGroup>
+
+```bash Premium Status
+/premium status
+/premium features
+```
+
+```bash Features by Tier
+• Gold: AI Chat, Basic Image Gen
+• Platinum: Enhanced AI, Priority Queue
+• Diamond: Advanced Features, Batch Processing
+• Guild Premium: Server-wide benefits
+```
+
+</CodeGroup>
+</Accordion>
+
+## Automated AI Analysis
+
+<Accordion title="Moderation Analysis">
+**Automatic:** AI analysis of all moderation actions  
+**Integration:** Seamless with moderation commands  
+
+<CodeGroup>
+
+```bash Automated Analysis
+• Warning reason categorization
+• Risk assessment scoring
+• Escalation pattern detection
+• User behavior analysis
+```
+
+```bash Integration Points
+=warn - Analyzes warning reasons
+=userinfo - Shows AI risk assessment
+=report - Threat level evaluation
+Context menus - Real-time analysis
+```
+
+</CodeGroup>
+
+<Info>
+AI analysis results are automatically included in user profiles and moderation logs, providing context for future decisions.
+</Info>
+</Accordion>
+
+## Error Handling & Limits
+
+<Accordion title="Usage Guidelines">
+
+<CodeGroup>
+
+```bash Rate Limits
+Individual cooldowns per command
+Fair usage enforcement
+Queue system for high demand
+Priority for premium users
+```
+
+```bash Common Issues
+• Insufficient tokens - upgrade tier
+• Content policy violations - revise prompt
+• Rate limit exceeded - wait for cooldown
+• Server overload - try again later
+```
+
+</CodeGroup>
+
+<Warning>
+AI-generated content must comply with Discord's Terms of Service and Community Guidelines. Violations may result in feature restrictions.
+</Warning>
+</Accordion>

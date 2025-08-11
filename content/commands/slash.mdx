@@ -1,0 +1,190 @@
+import { Accordion, CodeGroup, Info, Warning } from '../../components/MDXComponents.mdx'
+
+# Slash Commands
+
+Modern Discord interactions with auto-completion, better UX, and cross-platform compatibility.
+
+<Info>
+Slash commands work in guilds, DMs, and private channels based on their integration settings.
+</Info>
+
+## AI & Generation
+
+<Accordion title="viAI Chat">
+**Command:** `/viai <prompt>`  
+**Integration Types:** Guild (0), User (1)  
+**Context:** Guild (0), Bot DM (1), Private Channel (2)  
+**Cooldown:** 10 seconds  
+
+Advanced AI chat with premium tier benefits and rich responses.
+
+<CodeGroup>
+
+```bash Usage
+/viai prompt: How do I optimize my Discord server?
+/viai prompt: Write a creative story about time travel
+/viai prompt: Explain machine learning concepts
+```
+
+```bash Response Features
+• Rich embed formatting
+• Token usage tracking
+• Premium tier indicators
+• Conversation context
+• Multi-language support
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Image Generation">
+**Command:** `/generate <prompt> [private]`  
+**Premium:** Gold+ required  
+**Integration Types:** Guild (0), User (1)  
+**Context:** Guild (0), Bot DM (1), Private Channel (2)  
+**Cooldown:** 30 seconds  
+
+<CodeGroup>
+
+```bash Usage
+/generate prompt: A cyberpunk cityscape at night
+/generate prompt: Cute cartoon animals playing private: true
+/generate prompt: Abstract geometric art in blue tones
+```
+
+```bash Options
+• prompt: Description (max 1000 chars)
+• private: Visible only to you (optional)
+• Enhanced quality for higher tiers
+• Faster generation for premium users
+```
+
+</CodeGroup>
+</Accordion>
+
+## Token & Premium Management
+
+<Accordion title="Token Status">
+**Command:** `/tokens`  
+**Integration Types:** Guild (0), User (1)  
+**Context:** Guild (0), Bot DM (1), Private Channel (2)  
+**Cooldown:** 5 seconds  
+
+<CodeGroup>
+
+```bash Information Displayed
+Daily usage progress bar
+Remaining tokens count
+Tier benefits and limits
+Reset time (midnight UTC)
+Available features status
+```
+
+```bash Tier Limits
+Free: Premium required for AI access
+Gold: 3,000 daily, 500 per request
+Platinum: 7,000 daily, 1,000 per request
+Diamond: 15,000 daily, 2,000 per request
+```
+
+</CodeGroup>
+
+<Info>
+Token usage is tracked per user across all servers and resets daily at midnight UTC.
+</Info>
+</Accordion>
+
+<Accordion title="Premium Information">
+**Command:** `/premium [status/features]`  
+**Cooldown:** 10 seconds  
+
+<CodeGroup>
+
+```bash Subcommands
+/premium (shows overview)
+/premium status (detailed tier info)
+/premium features (available features)
+```
+
+```bash Premium Benefits
+• Higher AI token limits
+• Priority processing queues
+• Advanced image generation
+• Extended command cooldowns
+• Exclusive features access
+```
+
+</CodeGroup>
+</Accordion>
+
+## Integration Settings
+
+<Accordion title="Command Availability">
+
+<CodeGroup>
+
+```bash Integration Types
+Guild Install (0): Installed to servers
+User Install (1): Personal bot access
+```
+
+```bash Context Restrictions
+Guild (0): Server channels only
+Bot DM (1): Direct messages with bot
+Private Channel (2): Group chats, threads
+```
+
+</CodeGroup>
+
+<Warning>
+Some commands are restricted by integration type and context for security and functionality reasons.
+</Warning>
+</Accordion>
+
+## Error Handling
+
+<Accordion title="Common Responses">
+
+<CodeGroup>
+
+```bash Permission Errors
+"You need X permission to run this command"
+"This command requires premium access"
+"Command disabled in this server"
+```
+
+```bash Usage Errors
+"Please wait X seconds before using this command"
+"Invalid parameters provided"
+"This command is guild-only"
+```
+
+</CodeGroup>
+</Accordion>
+
+## Ephemeral vs Public
+
+<Accordion title="Response Visibility">
+
+<CodeGroup>
+
+```bash Ephemeral (Private)
+• Error messages
+• Personal information (/tokens)
+• Debug information
+• Privacy-sensitive data
+```
+
+```bash Public
+• Generated content
+• Information commands
+• Moderation actions
+• Server utilities
+```
+
+</CodeGroup>
+
+<Info>
+Most slash commands default to public responses unless they contain sensitive information or the user explicitly requests privacy.
+</Info>
+</Accordion>

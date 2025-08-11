@@ -1,0 +1,41 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Velveta Discord Bot",
+  "logo": "/logo.svg",
+  "favicon": "/logo.svg",
+  "colors": {
+    "primary": "#7C3AED",
+    "light": "#A78BFA",
+    "dark": "#4C1D95"
+  },
+  "navigation": [
+    { "group": "Overview", "pages": ["/overview/introduction", "/overview/getting-started", "/overview/installation"] },
+    { "group": "Commands", "pages": [
+      "/commands/moderation",
+      "/commands/info", 
+      "/commands/ai",
+      "/commands/slash",
+      "/commands/context",
+      "/commands/premium-features",
+      "/commands/verification",
+      "/commands/owner"
+    ] },
+    { "group": "Embeds", "pages": [
+      "/embeds/builder",
+      "/embeds/welcome",
+      "/embeds/farewell",
+      "/embeds/booster",
+      "/embeds/moderation-responses"
+    ] },
+    { "group": "Systems", "pages": [
+      "/systems/verification",
+      "/systems/user-cases",
+      "/systems/premium"
+    ] },
+    { "group": "Guides", "pages": [
+      "/guides/setup",
+      "/guides/configuration",
+      "/guides/troubleshooting"
+    ] }
+  ]
+}

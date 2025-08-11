@@ -1,0 +1,319 @@
+import { Accordion, CodeGroup, Info, Warning } from '../../components/MDXComponents.mdx'
+
+# Verification System
+
+Complete guide to the verification and passport system that provides cross-server identity validation and security features.
+
+<Info>
+The verification system uses external web authentication to validate user identity and create global passports for cross-server reputation.
+</Info>
+
+## Passport System
+
+<Accordion title="Global Passport Overview">
+**Command:** `=passport [user]`  
+**Permissions:** None  
+**Category:** Info  
+**Cooldown:** 10 seconds  
+
+Global verification passport that tracks user verification status, premium tier, and reputation across all servers.
+
+<CodeGroup>
+
+```bash Basic Usage
+=passport
+=passport @user
+=passport 123456789012345678
+```
+
+```bash Passport Components
+• Verification Status (pending/verified/revoked)
+• Premium Tier (free/gold/platinum/diamond)
+• Warning Count (cross-server)
+• Account Security Rating
+• Global Reputation Score
+```
+
+</CodeGroup>
+
+<Info>
+Passports are global and follow users across all servers using the bot. Verification status is maintained for 30 days.
+</Info>
+</Accordion>
+
+## Verification Process
+
+<Accordion title="User Verification">
+**Command:** `=verify`  
+**Permissions:** None  
+**Category:** Verification  
+**Cooldown:** 30 seconds  
+**Guild Only:** Yes  
+
+Start the verification process to gain access to server features and build global reputation.
+
+<CodeGroup>
+
+```bash Verification Flow
+1. User runs =verify command
+2. Bot generates secure verification token
+3. User visits external verification site
+4. Complete CAPTCHA and identity validation
+5. System creates/updates global passport
+6. Bot assigns verified role automatically
+```
+
+```bash Verification Features
+• Advanced CAPTCHA protection
+• IP validation and fraud detection
+• Browser fingerprinting
+• Rate limiting and abuse protection
+• Cross-server reputation building
+```
+
+</CodeGroup>
+
+<Warning>
+Verification tokens expire after 10 minutes. Users must complete the process within this timeframe.
+</Warning>
+</Accordion>
+
+<Accordion title="Verification Configuration">
+Server administrators can configure verification settings through the dashboard:
+
+<CodeGroup>
+
+```bash Server Setup
+• Enable/disable verification requirement
+• Set verification channel (optional)
+• Configure verified role
+• Set unverified role (auto-removed)
+• Configure welcome messages
+```
+
+```bash Security Options
+• Require verification for all users
+• Auto-kick unverified users after timeout
+• IP-based restrictions
+• VPN/proxy detection
+• Account age requirements
+```
+
+</CodeGroup>
+</Accordion>
+
+## Premium Integration
+
+<Accordion title="Verification Premium Benefits">
+Verified users with premium tiers receive enhanced features:
+
+<CodeGroup>
+
+```bash Gold Tier Benefits
+• Faster verification processing
+• Priority support access
+• Enhanced passport features
+• Cross-server premium recognition
+```
+
+```bash Platinum+ Benefits
+• Verification badge customization
+• Advanced security features
+• Extended verification validity
+• Premium passport styling
+```
+
+</CodeGroup>
+</Accordion>
+
+## Security Features
+
+<Accordion title="Anti-Fraud Protection">
+The verification system includes comprehensive security measures:
+
+<CodeGroup>
+
+```bash Security Layers
+• CAPTCHA validation (multiple types)
+• Browser fingerprinting
+• IP reputation checking
+• VPN/proxy detection
+• Rate limiting per user/IP
+• Suspicious activity monitoring
+```
+
+```bash Fraud Detection
+• Multiple account detection
+• Automated behavior analysis
+• Cross-reference with known bad actors
+• Real-time risk assessment
+• Appeals process for false positives
+```
+
+</CodeGroup>
+
+<Warning>
+Users attempting to bypass security measures may be permanently banned from the verification system.
+</Warning>
+</Accordion>
+
+<Accordion title="Data Privacy">
+The verification system follows strict privacy guidelines:
+
+<CodeGroup>
+
+```bash Data Collection
+• Only necessary verification data stored
+• IP addresses hashed for security
+• Browser fingerprints anonymized
+• No personal information required
+• Data retention limited to 90 days
+```
+
+```bash User Rights
+• Request verification data export
+• Delete verification history
+• Appeal verification decisions
+• Opt-out of cross-server tracking
+```
+
+</CodeGroup>
+</Accordion>
+
+## Administration Tools
+
+<Accordion title="Verification Management">
+Server administrators have access to verification oversight tools:
+
+<CodeGroup>
+
+```bash Admin Features
+• View server verification statistics
+• Manual verification approval/denial
+• Bulk role management for verified users
+• Verification requirement exemptions
+• Custom verification messages
+```
+
+```bash Monitoring Tools
+• Verification attempt logs
+• Failed verification tracking
+• Suspicious activity alerts
+• User verification history
+• Cross-server reputation viewing
+```
+
+</CodeGroup>
+</Accordion>
+
+## Troubleshooting
+
+<Accordion title="Common Issues">
+**Verification Link Not Working**
+- Check link hasn't expired (10 minute limit)
+- Ensure you're accessing from the same browser/device
+- Clear cookies and try again
+- Contact server moderators if issues persist
+
+**Role Not Assigned After Verification**
+- Run `=verify` again to trigger role assignment
+- Check bot has Manage Roles permission
+- Ensure verified role exists and is below bot's role
+- Contact administrator if bot permissions need updating
+
+<CodeGroup>
+
+```bash Verification Status Check
+=passport
+=passport @user
+```
+
+```bash Debug Steps
+1. Check verification is enabled on server
+2. Verify user has required permissions
+3. Confirm verification channel setup
+4. Test bot role hierarchy
+5. Review audit logs for errors
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Error Messages">
+Common verification error messages and solutions:
+
+<CodeGroup>
+
+```bash Error Responses
+❌ Verification is not enabled on this server
+❌ Please use this command in #verification instead
+❌ You are already verified on this server
+❌ Verification link has expired
+❌ Invalid verification token
+```
+
+```bash Solutions
+• Contact server admin to enable verification
+• Use command in designated channel
+• Run =passport to check current status
+• Generate new link with =verify
+• Clear browser data and retry
+```
+
+</CodeGroup>
+</Accordion>
+
+## API Integration
+
+<Accordion title="Webhook System">
+The verification system uses webhooks for real-time updates:
+
+<CodeGroup>
+
+```bash Webhook Events
+• verification-complete: User completed verification
+• verification-failed: Verification attempt failed
+• verification-expired: Token expired unused
+• security-alert: Suspicious activity detected
+```
+
+```bash Integration Features
+• Real-time role assignment
+• Cross-server synchronization
+• Security event logging
+• Custom response handling
+• Fallback mechanisms
+```
+
+</CodeGroup>
+
+<Info>
+Webhook integration is automatic and requires no additional configuration for basic functionality.
+</Info>
+</Accordion>
+
+## Best Practices
+
+<Accordion title="Server Setup Recommendations">
+For optimal verification system performance:
+
+<CodeGroup>
+
+```bash Recommended Setup
+• Create dedicated #verification channel
+• Set appropriate role hierarchy
+• Configure welcome messages
+• Enable verification logging
+• Set reasonable timeout periods
+```
+
+```bash Security Best Practices
+• Regular verification requirement reviews
+• Monitor failed verification attempts
+• Configure IP-based restrictions if needed
+• Keep verification messages up to date
+• Train moderators on appeals process
+```
+
+</CodeGroup>
+</Accordion>

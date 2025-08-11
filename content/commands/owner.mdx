@@ -1,0 +1,450 @@
+import { Accordion, CodeGroup, Info, Warning } from '../../components/MDXComponents.mdx'
+
+# Owner & Administrative Commands
+
+Comprehensive reference for owner-only and administrative commands for bot management, user oversight, and system maintenance.
+
+<Warning>
+These commands are restricted to bot owners and authorized administrators. Misuse can result in data loss or service disruption.
+</Warning>
+
+## User Management
+
+<Accordion title="User Command System">
+**Command:** `=user <action> <userID> [args]`  
+**Permissions:** Owner only  
+**Category:** Owner  
+**Cooldown:** 5 seconds  
+
+Comprehensive user management system for global bans, verification, and account oversight.
+
+<CodeGroup>
+
+```bash Core Actions
+=user ban <userID> <reason> [expiry]
+=user unban <userID> <reason>
+=user verify <userID> <reason> [expiry]
+=user history <userID>
+=user reset <userID>
+```
+
+```bash Examples
+=user ban 123456789 Spam violation 31/12/2025
+=user unban 123456789 Appeal approved
+=user verify 123456789 Manual verification permanent
+=user history 123456789
+=user reset 123456789
+```
+
+</CodeGroup>
+
+### User Actions
+
+<Accordion title="Global Ban System">
+**Subcommand:** `ban <userID> <reason> [expiry]`
+
+Issue global bans across all servers using the bot.
+
+<CodeGroup>
+
+```bash Ban Features
+• Cross-server ban enforcement
+• Temporary or permanent bans
+• Automated reason logging
+• Appeal tracking integration
+• Webhook notifications
+```
+
+```bash Date Formats
+permanent - Never expires
+31/12/2025 - DD/MM/YYYY format
+90 - Days from now (alternative)
+```
+
+</CodeGroup>
+
+<Info>
+Global bans are enforced across all servers using the bot and include automated case creation for tracking.
+</Info>
+</Accordion>
+
+<Accordion title="Manual Verification">
+**Subcommand:** `verify <userID> <reason> [expiry]`
+
+Manually verify users or override verification status.
+
+<CodeGroup>
+
+```bash Verification Options
+• Instant verification bypass
+• Custom verification expiry
+• Override security restrictions
+• Create global passport entry
+• Trigger role assignments
+```
+
+```bash Use Cases
+• Appeal resolutions
+• VIP user fast-tracking
+• Security exception handling
+• Testing and development
+• Emergency access grants
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="User History & Analytics">
+**Subcommand:** `history <userID>`
+
+Comprehensive user activity and moderation history across all servers.
+
+<CodeGroup>
+
+```bash History Components
+• Moderation actions taken
+• Cases and warnings issued
+• Verification attempts
+• Premium status changes
+• Cross-server activity
+• Security incidents
+```
+
+```bash Data Sources
+• Moderation logs
+• User cases database
+• Warning systems
+• Verification records
+• Premium transactions
+• Security alerts
+```
+
+</CodeGroup>
+</Accordion>
+</Accordion>
+
+## Premium Management
+
+<Accordion title="Premium Administration">
+**Command:** `=premium <action> [args]`  
+**Permissions:** Owner only  
+**Category:** Owner  
+**Cooldown:** 5 seconds  
+
+Advanced premium tier management for users and guilds.
+
+<CodeGroup>
+
+```bash User Premium
+=premium add user <userId> <tier> <days|permanent>
+=premium extend user <userId> <days>
+=premium remove user <userId>
+=premium check <userId>
+```
+
+```bash Guild Premium
+=premium add guild <guildId> <userId> <tier> <days|permanent>
+=premium extend guild <guildId> <days>
+=premium remove guild <guildId>
+=premium list [page]
+```
+
+</CodeGroup>
+
+### Premium Features
+
+<Accordion title="Tier Management">
+**Available Tiers:** Gold, Platinum, Diamond
+
+<CodeGroup>
+
+```bash Gold Tier (3,000 tokens/day)
+• Basic premium features
+• Enhanced AI limits
+• Priority support access
+• Custom embed creation
+```
+
+```bash Platinum Tier (7,000 tokens/day)
+• Advanced automation features
+• Booster recognition system
+• Extended analytics
+• Priority feature access
+```
+
+```bash Diamond Tier (15,000 tokens/day)
+• Maximum feature access
+• Developer support access
+• Beta feature early access
+• Custom integrations
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Guild Premium">
+Guild-wide premium provides enhanced features for entire servers:
+
+<CodeGroup>
+
+```bash Guild Benefits
+• Server-wide AI access
+• Enhanced moderation tools
+• Advanced analytics dashboard
+• Priority support queues
+• Custom branding options
+```
+
+```bash Management Features
+• Owner and admin control
+• Shared token pools
+• Member benefit inheritance
+• Usage analytics
+• Billing management
+```
+
+</CodeGroup>
+</Accordion>
+</Accordion>
+
+## System Administration
+
+<Accordion title="System Health Monitoring">
+**Command:** `=systemhealth`  
+**Permissions:** Owner only  
+**Category:** Owner  
+
+Real-time system performance and health monitoring.
+
+<CodeGroup>
+
+```bash System Metrics
+• Bot uptime and latency
+• Database connection status
+• Memory and CPU usage
+• Command execution stats
+• Error rates and patterns
+```
+
+```bash Health Indicators
+• API response times
+• Webhook delivery status
+• Cache hit rates
+• Queue processing times
+• Resource utilization
+```
+
+</CodeGroup>
+
+<Info>
+System health data is updated in real-time and includes historical trending for performance analysis.
+</Info>
+</Accordion>
+
+<Accordion title="Database Management">
+**Command:** `=dbmanage <action> [args]`  
+**Permissions:** Owner only  
+**Category:** Owner  
+
+Database maintenance and management operations.
+
+<CodeGroup>
+
+```bash Database Actions
+• Collection statistics
+• Index optimization
+• Data cleanup routines
+• Backup status checks
+• Migration management
+```
+
+```bash Maintenance Tasks
+• Remove expired records
+• Optimize query performance
+• Clean temporary data
+• Update schema versions
+• Verify data integrity
+```
+
+</CodeGroup>
+
+<Warning>
+Database management commands can affect system performance. Use during maintenance windows when possible.
+</Warning>
+</Accordion>
+
+## Security & Audit
+
+<Accordion title="Security Management">
+**Command:** `=security <action> [args]`  
+**Permissions:** Owner only  
+**Category:** Owner  
+
+Security monitoring and threat management tools.
+
+<CodeGroup>
+
+```bash Security Features
+• Threat detection alerts
+• IP-based restrictions
+• Rate limiting adjustments
+• Abuse pattern analysis
+• Incident response tools
+```
+
+```bash Monitoring Capabilities
+• Failed verification attempts
+• Suspicious activity patterns
+• Cross-server behavior analysis
+• Automated threat responses
+• Security event logging
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Audit Logging">
+**Command:** `=audit <action> [args]`  
+**Permissions:** Owner only  
+**Category:** Owner  
+
+Comprehensive audit trail and compliance monitoring.
+
+<CodeGroup>
+
+```bash Audit Features
+• Admin action logging
+• User behavior tracking
+• System change records
+• Compliance reporting
+• Data access logs
+```
+
+```bash Audit Categories
+• Command usage statistics
+• Permission changes
+• Data modifications
+• Security incidents
+• Policy violations
+```
+
+</CodeGroup>
+
+<Info>
+Audit logs are retained for compliance purposes and can be exported for external analysis.
+</Info>
+</Accordion>
+
+## Advanced Operations
+
+<Accordion title="Bulk Operations">
+Owner commands support bulk operations for efficiency:
+
+<CodeGroup>
+
+```bash Bulk User Management
+• Mass verification updates
+• Batch premium assignments
+• Bulk ban/unban operations
+• Group permission changes
+```
+
+```bash Batch Processing
+• CSV import/export
+• Scheduled operations
+• Progress tracking
+• Error handling
+• Rollback capabilities
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Integration Management">
+**External Service Integration**
+
+<CodeGroup>
+
+```bash Service Integrations
+• Webhook endpoint management
+• API key rotation
+• Third-party service status
+• Integration health checks
+• Failover configurations
+```
+
+```bash Monitoring Tools
+• Service availability tracking
+• Response time monitoring
+• Error rate analysis
+• Capacity planning
+• Performance optimization
+```
+
+</CodeGroup>
+</Accordion>
+
+## Emergency Procedures
+
+<Accordion title="Emergency Commands">
+Critical operations for emergency situations:
+
+<CodeGroup>
+
+```bash Emergency Actions
+• Global service disable
+• Mass user restrictions
+• Security lockdown mode
+• Emergency notifications
+• Incident escalation
+```
+
+```bash Recovery Procedures
+• Service restoration
+• Data recovery operations
+• User communication
+• Status page updates
+• Post-incident analysis
+```
+
+</CodeGroup>
+
+<Warning>
+Emergency procedures should only be used during critical incidents. Document all actions taken for post-incident review.
+</Warning>
+</Accordion>
+
+## Command Reference
+
+<Accordion title="Complete Owner Command List">
+
+<CodeGroup>
+
+```bash User Management
+=user ban <userID> <reason> [expiry]
+=user unban <userID> <reason>
+=user verify <userID> <reason> [expiry]
+=user history <userID>
+=user reset <userID>
+```
+
+```bash Premium Management
+=premium add user <userId> <tier> <days|permanent>
+=premium add guild <guildId> <userId> <tier> <days|permanent>
+=premium extend user <userId> <days>
+=premium extend guild <guildId> <days>
+=premium remove user <userId>
+=premium remove guild <guildId>
+=premium list [page]
+=premium check <userId>
+```
+
+```bash System Operations
+=systemhealth
+=dbmanage <action> [args]
+=security <action> [args]
+=audit <action> [args]
+```
+
+</CodeGroup>
+</Accordion>

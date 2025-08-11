@@ -1,0 +1,327 @@
+import { Accordion, CodeGroup, Info, Warning } from '../../components/MDXComponents.mdx'
+
+# Premium Commands & Features
+
+Comprehensive guide to premium-exclusive commands and enhanced features available through Gold, Platinum, and Diamond tiers.
+
+<Info>
+Premium features are available through user-level or guild-level premium subscriptions. Guild premium applies to all members.
+</Info>
+
+## Premium Embed System
+
+<Accordion title="Advanced Embed Builder">
+**Command:** `=embed <subcommand> [args]`  
+**Premium:** Gold+ required  
+**Permissions:** Manage Messages  
+**Category:** Premium  
+
+Create sophisticated embed messages with advanced features and automation.
+
+<CodeGroup>
+
+```bash Core Subcommands
+=embed create {embed_string}
+=embed preview <embed_id>
+=embed list [page]
+=embed quota
+=embed syntax
+```
+
+```bash Advanced Features
+=embed create {content} --react: 👍🎉
+=embed create {content} --reply: command
+=embed create {content} --reply: word --restricted: yes
+```
+
+</CodeGroup>
+
+### Embed Creation Syntax
+
+<Accordion title="Embed String Format">
+Use the declarative embed syntax with variable support:
+
+<CodeGroup>
+
+```javascript Basic Structure
+{title: Welcome to {guild.name}}$v
+{description: Hello {user.mention}!}$v
+{color: #7C3AED}$v
+{footer: {user.tag} && {user.avatar}}
+```
+
+```javascript Advanced Components
+{field: Role && {user.roles} && inline}$v
+{thumbnail: {guild.icon}}$v
+{image: https://example.com/banner.png}$v
+{button: blurple && Join Now && https://discord.gg/example}
+```
+
+</CodeGroup>
+</Accordion>
+
+### Auto-Reply Integration
+
+<Accordion title="Reply System Configuration">
+**Command-based replies:** Trigger when specific commands are used
+**Word-based replies:** Trigger on message content matching
+
+<CodeGroup>
+
+```bash Command Replies
+=embed create {content} --reply: ban
+=embed create {content} --reply: warn
+=embed create {content} --reply: timeout
+```
+
+```bash Word Replies
+=embed create {content} --reply: hello,hi --restricted: no
+=embed create {content} --reply: help --restricted: yes
+```
+
+</CodeGroup>
+
+<Info>
+Restricted replies only trigger for users with Manage Messages permission, while unrestricted replies work for all users.
+</Info>
+</Accordion>
+
+### Reaction Automation
+
+<Accordion title="Automatic Reactions">
+Add automatic reactions to embed messages with emoji support:
+
+<CodeGroup>
+
+```bash Reaction Examples
+=embed create {content} --react: 👍👎
+=embed create {content} --react: 🎉🔥💯
+=embed create {content} --react: <:custom:123456789>
+```
+
+```bash Features
+• Unicode emoji support
+• Custom server emoji support
+• Multiple reactions per embed
+• Automatic application on send
+```
+
+</CodeGroup>
+</Accordion>
+
+## Welcome & Farewell System
+
+<Accordion title="Welcome Messages">
+**Command:** `=welcome <enable/disable/set/test> [args]`  
+**Premium:** Gold+ required  
+**Permissions:** Manage Server  
+
+<CodeGroup>
+
+```bash Configuration
+=welcome enable #welcome-channel
+=welcome set template_id_123
+=welcome test @user
+=welcome disable
+```
+
+```bash Features
+• Custom embed templates
+• Variable substitution
+• Role auto-assignment
+• Welcome DM options
+• Join analytics tracking
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Farewell Messages">
+**Command:** `=farewell <enable/disable/set/test> [args]`  
+**Premium:** Gold+ required  
+**Permissions:** Manage Server  
+
+<CodeGroup>
+
+```bash Configuration
+=farewell enable #farewell-channel
+=farewell set template_id_456
+=farewell test @user
+=farewell disable
+```
+
+```bash Farewell Variables
+{user} - User mention and info
+{guild} - Server information
+{member} - Member-specific data
+{leave_reason} - If available
+```
+
+</CodeGroup>
+</Accordion>
+
+## Booster Recognition
+
+<Accordion title="Booster Messages">
+**Command:** `=booster <enable/disable/set> [args]`  
+**Premium:** Platinum+ required  
+**Permissions:** Manage Server  
+
+Recognize and thank server boosters with custom messages and rewards.
+
+<CodeGroup>
+
+```bash Configuration
+=booster enable channel #boosters
+=booster enable dm
+=booster set channel template_id_789
+=booster set dm template_id_abc
+=booster disable
+```
+
+```bash Booster Features
+• Instant boost detection
+• Channel announcements
+• Direct message thanks
+• Custom embed templates
+• Reaction automation
+• Role rewards integration
+```
+
+</CodeGroup>
+</Accordion>
+
+## Premium Tier Management
+
+<Accordion title="Tier Benefits Comparison">
+
+<CodeGroup>
+
+```bash Gold Tier (3,000 tokens/day)
+• Basic embed builder
+• Welcome/farewell messages
+• AI chat access (500 tokens/request)
+• Standard image generation
+• Basic user analysis
+```
+
+```bash Platinum Tier (7,000 tokens/day)
+• Advanced embed features
+• Booster recognition system
+• Enhanced AI features (1,000 tokens/request)
+• Priority image generation
+• Extended user analysis
+```
+
+```bash Diamond Tier (15,000 tokens/day)
+• Full feature access
+• Message analysis tools
+• Maximum AI limits (2,000 tokens/request)
+• Batch image generation
+• Comprehensive analytics
+```
+
+</CodeGroup>
+</Accordion>
+
+<Accordion title="Guild Premium">
+**Benefits:** Server-wide premium features for all members
+**Management:** Owner and administrator control
+**Features:** Shared token pools and enhanced limits
+
+<CodeGroup>
+
+```bash Guild Premium Features
+• Server-wide AI access
+• Enhanced moderation tools
+• Advanced analytics
+• Priority support
+• Custom branding options
+```
+
+```bash Management Commands
+=premium guild enable
+=premium guild status
+=premium guild features
+=premium guild disable
+```
+
+</CodeGroup>
+</Accordion>
+
+## Premium Command Categories
+
+<Accordion title="Embed & Automation">
+- `=embed` - Advanced embed creation and management
+- `=welcome` - Welcome message automation
+- `=farewell` - Farewell message system  
+- `=booster` - Booster recognition and rewards
+</Accordion>
+
+<Accordion title="AI & Analysis">
+- Enhanced `/viai` limits and features
+- `/generate` - Image generation capabilities
+- Context menu analysis tools
+- Advanced user behavior insights
+</Accordion>
+
+<Accordion title="Moderation Enhancement">
+- Extended `=userinfo` analysis
+- AI-powered risk assessment
+- Cross-server reputation tracking
+- Advanced reporting features
+</Accordion>
+
+## Quota Management
+
+<Accordion title="Usage Limits">
+**Command:** `=embed quota`  
+**Information:** View current usage against tier limits
+
+<CodeGroup>
+
+```bash Quota Information
+• Embeds created this month
+• Templates stored
+• Auto-replies configured
+• Reaction setups active
+• Premium features used
+```
+
+```bash Tier Limits
+Gold: 50 embeds/month, 10 templates
+Platinum: 150 embeds/month, 25 templates
+Diamond: Unlimited embeds, 100 templates
+```
+
+</CodeGroup>
+
+<Warning>
+Exceeding quota limits may result in temporary feature restrictions until the next billing cycle.
+</Warning>
+</Accordion>
+
+## Premium Support
+
+<Accordion title="Priority Support Access">
+Premium users receive enhanced support including:
+
+<CodeGroup>
+
+```bash Support Benefits
+• Priority ticket response times
+• Direct developer access (Diamond)
+• Beta feature early access
+• Custom feature requests
+• Advanced troubleshooting
+```
+
+```bash Contact Methods
+• Premium support server
+• Priority ticket system
+• Developer direct messages (Diamond)
+• Community premium channels
+```
+
+</CodeGroup>
+</Accordion>
