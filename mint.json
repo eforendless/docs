@@ -9,33 +9,18 @@
     "dark": "#4C1D95"
   },
   "navigation": [
-    { "group": "Overview", "pages": ["/overview/introduction", "/overview/getting-started", "/overview/installation"] },
     { "group": "Commands", "pages": [
-      "/commands/moderation",
-      "/commands/info", 
-      "/commands/ai",
-      "/commands/slash",
-      "/commands/context",
-      "/commands/premium-features",
-      "/commands/verification",
-      "/commands/owner"
-    ] },
-    { "group": "Embeds", "pages": [
-      "/embeds/builder",
-      "/embeds/welcome",
-      "/embeds/farewell",
-      "/embeds/booster",
-      "/embeds/moderation-responses"
-    ] },
-    { "group": "Systems", "pages": [
-      "/systems/verification",
-      "/systems/user-cases",
-      "/systems/premium"
+      "content/commands/moderation",
+      "content/commands/info", 
+      "content/commands/ai",
+      "content/commands/slash",
+      "content/commands/context",
+      "content/commands/premium-features",
+      "content/commands/verification",
+      "content/commands/owner"
     ] },
     { "group": "Guides", "pages": [
-      "/guides/setup",
-      "/guides/configuration",
-      "/guides/troubleshooting"
+      "content/guides/setup"
     ] }
   ]
 }
