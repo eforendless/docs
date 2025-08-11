@@ -1,0 +1,372 @@
+---
+title: Getting Started
+description: "Quick start guide to using Velveta Bot in your Discord server."
+icon: rocket
+---
+
+## Adding Velveta Bot
+
+Get started with Velveta Bot in just a few simple steps.
+
+### Step 1: Invite the Bot
+
+<Card title="Invite Velveta Bot" icon="plus" href="https://velvetaai.com/discord">
+  Open the official invite page and add Velveta to your server with the required permissions.
+</Card>
+
+<Warning>
+Make sure you have **Manage Server** permissions to add bots to your Discord server.
+</Warning>
+
+### Step 2: Initial Setup
+
+After inviting the bot, confirm the prefix and enable key features:
+
+- Default prefix: `=`
+- Enable verification (recommended):
+  ```
+  =verification setup
+  ```
+- Check your premium/tokens status:
+  ```
+  /premium status
+  /tokens
+  ```
+
+### Step 3: Choose Your Plan
+
+Velveta Bot offers different tiers to suit your needs:
+
+<CardGroup cols={3}>
+  <Card title="Free" icon="gift">
+    - Basic moderation commands
+    - Verification system access
+    - No AI generation access
+  </Card>
+  
+  <Card title="Gold" icon="gem" color="#FFD700">
+    - AI access enabled
+    - Daily tokens: 3,000
+    - Per text request max: 500 tokens
+    - Image generation cost: 1,000 tokens
+  </Card>
+  
+  <Card title="Platinum" icon="diamond" color="#E5E4E2">
+    - Daily tokens: 7,000
+    - Per text request max: 1,000 tokens
+    - Image generation cost: 800 tokens (HD 1024×1024)
+  </Card>
+  
+  <Card title="Diamond" icon="crown" color="#B9F2FF">
+    - Daily tokens: 15,000
+    - Per text request max: 2,000 tokens
+    - Image generation cost: 600 tokens (HD Wide 1792×1024)
+  </Card>
+</CardGroup>
+
+## Essential Commands
+
+Core commands to get you started:
+
+### AI Commands
+
+<AccordionGroup>
+  <Accordion title="/viai" icon="message-circle">
+    Chat with Velveta AI (requires premium tier with tokens).
+    
+    ```
+    /viai prompt:"Write a short welcome message for my Minecraft server"
+    /viai prompt:"Summarize our rules" private:true
+    ```
+  </Accordion>
+
+  <Accordion title="/generate" icon="image">
+    Generate an image from a prompt (quality/size auto-adjusts by your tier).
+    
+    ```
+    /generate prompt:"A cozy reading nook with soft lighting"
+    ```
+  </Accordion>
+
+  <Accordion title="/tokens" icon="ticket">
+    Check your daily token usage, remaining balance, and reset time.
+    
+    ```
+    /tokens
+    ```
+  </Accordion>
+
+  <Accordion title="/premium" icon="star">
+    View your premium status and tier features.
+    
+    ```
+    /premium status
+    /premium features
+    ```
+  </Accordion>
+</AccordionGroup>
+
+### Moderation Commands
+
+<AccordionGroup>
+  <Accordion title="=warn" icon="exclamation-triangle">
+    Issue a warning to a user (ID or mention). Requires moderator permissions.
+    
+    ```
+    =warn 123456789012345678 Inappropriate language
+    ```
+  </Accordion>
+
+  <Accordion title="=timeout" icon="clock">
+    Temporarily restrict a user. Durations: 30s, 5m, 1h, 1d, 1w (max).
+    
+    ```
+    =timeout 123456789012345678 1h Spam
+    ```
+  </Accordion>
+
+  <Accordion title="=kick / =ban" icon="ban">
+    Remove problematic users from the server.
+    
+    ```
+    =kick 123456789012345678 Repeated rule violations
+    =ban 123456789012345678 Severe harassment
+    ```
+  </Accordion>
+</AccordionGroup>
+
+### Using Embed Code
+
+<AccordionGroup>
+  <Accordion title="Embed basics" icon="message-square">
+    Many features accept Velveta embed code. Learn the syntax in the Embeds guide.
+    
+    ```
+    {title: Welcome!}$v{description: Hello {user.mention}!}$v{color: #00FF00}
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Setting Up Key Features
+
+### Verification System
+
+Enable verification to protect your server:
+
+1. Run setup (automatically creates channel/roles/buttons):
+   ```
+   =verification setup
+   ```
+2. Toggle verification on/off anytime:
+   ```
+   =verification enable
+   =verification disable
+   ```
+
+### Welcome & Farewell Messages
+
+Create welcoming experiences for new members. Use embed code from the Embeds guide to craft rich messages. Server-specific setup commands may vary and can be managed by server staff tools.
+
+<Info>Automated moderation and advanced workflows are roadmap features. Current release supports manual moderation via prefix commands.</Info>
+
+## Creating Your First Embed
+
+Let's create a welcome embed step by step:
+
+### Step 1: Basic Structure
+
+Start with a simple title and description:
+
+```
+{title: Welcome to our server!}$v{description: Thanks for joining {user.mention}!}
+```
+
+### Step 2: Add Color and Styling
+
+Make it visually appealing:
+
+```
+{title: Welcome to our server!}$v{description: Thanks for joining {user.mention}!}$v{color: #00FF00}$v{thumbnail: {guild.icon}}
+```
+
+### Step 3: Add Interactive Elements
+
+Include buttons for user actions:
+
+```
+{title: Welcome to our server!}$v{description: Thanks for joining {user.mention}!}$v{color: #00FF00}$v{thumbnail: {guild.icon}}$v{button: green && Get Verified && verify}
+```
+
+### Step 4: Test Your Embed
+
+Post your embed in a staff-only channel or a test server before rolling it out broadly.
+
+## Common Setup Scenarios
+
+### Community Server
+
+Perfect for large community servers:
+
+<Steps>
+  <Step title="Set up verification">
+    Enable phone or Discord verification to prevent raids
+  </Step>
+  <Step title="Create role menus">
+    Use embed buttons for self-assignable roles
+  </Step>
+  <Step title="Configure automod">
+    Set up spam detection and word filters
+  </Step>
+  <Step title="Set up logging">
+    Enable moderation logs in a staff channel
+  </Step>
+</Steps>
+
+### Gaming Server
+
+Optimized for gaming communities:
+
+<Steps>
+  <Step title="Game role selection">
+    Create embeds with buttons for game-specific roles
+  </Step>
+  <Step title="Event announcements">
+    Set up tournament and event notification templates
+  </Step>
+  <Step title="Voice channel management">
+    Configure automatic voice channel creation
+  </Step>
+  <Step title="Achievement system">
+    Use AI features for fun achievement messages
+  </Step>
+</Steps>
+
+### Educational Server
+
+Great for schools and study groups:
+
+<Steps>
+  <Step title="Student verification">
+    Set up email or school-based verification
+  </Step>
+  <Step title="Assignment reminders">
+    Create templates for homework and deadline reminders
+  </Step>
+  <Step title="Study group coordination">
+    Use embed scheduling for study sessions
+  </Step>
+  <Step title="Academic integrity">
+    Configure strict moderation for academic honesty
+  </Step>
+</Steps>
+
+## Customization Tips
+
+### Branding Your Embeds
+
+Make embeds match your server's style:
+
+- **Use your server colors:** `{color: #YOUR_HEX_COLOR}`
+- **Add your logo:** `{thumbnail: YOUR_LOGO_URL}`
+- **Consistent footer:** `{footer: {guild.name} • {date}}`
+
+### Personalizing Messages
+
+Use variables to make messages feel personal:
+
+- **User mentions:** `{user.mention}`
+- **Server stats:** `Member #{guild.member_count}`
+- **Role recognition:** `Welcome, {user.role}!`
+
+### Interactive Elements
+
+Engage users with buttons and reactions:
+
+- **Verification buttons:** Quick verification access
+- **Role selection:** Self-assignable role menus
+- **Feedback collection:** Reaction-based polls
+
+## Troubleshooting
+
+### Bot Not Responding
+
+<AccordionGroup>
+  <Accordion title="Check Permissions">
+    Ensure the bot has these permissions:
+    - Send Messages
+    - Embed Links
+    - Add Reactions
+    - Manage Messages
+    - Manage Roles (for verification)
+  </Accordion>
+
+  <Accordion title="Verify Bot Status">
+    The bot should appear online in your member list. If offline, check:
+    - Bot invite link was used correctly
+    - Server outage status
+    - Bot permissions haven't been changed
+  </Accordion>
+</AccordionGroup>
+
+### Embeds Not Working
+
+<AccordionGroup>
+  <Accordion title="Syntax Errors">
+    Common embed syntax issues:
+    - Missing `$v` separators
+    - Unmatched braces `{}`
+    - Invalid color codes
+    - Broken variable names
+  </Accordion>
+
+  <Accordion title="Permission Issues">
+    Bot needs **Embed Links** permission to send embeds.
+  </Accordion>
+</AccordionGroup>
+
+### Commands Not Found
+
+<AccordionGroup>
+  <Accordion title="Slash Commands">
+    If slash commands don't appear:
+    - Wait a few minutes for Discord to sync
+    - Re-invite the bot with updated permissions
+    - Check if commands are disabled in your server
+  </Accordion>
+
+  <Accordion title="Prefix Commands">
+    Default prefix is `v!` - try:
+    ```
+    v!help
+    v!ping
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+Now that you have Velveta Bot set up, explore these advanced features:
+
+<CardGroup cols={2}>
+  <Card title="Advanced Embeds" icon="code" href="/discord/embeds">
+    Learn complex embed scripting and templates
+  </Card>
+  
+  <Card title="AI Features" icon="brain" href="/discord/ai">
+    Explore AI text and image generation
+  </Card>
+  
+  <Card title="Moderation Tools" icon="shield" href="/discord/moderation">
+    Set up advanced moderation and logging
+  </Card>
+  
+  <Card title="Premium Features" icon="star" href="/discord/premium">
+    Unlock premium capabilities
+  </Card>
+</CardGroup>
+
+---
+
+<Info>
+Need help? Join our [support server](https://discord.gg/velveta) or check out our guides under [/discord](/discord).
+</Info>

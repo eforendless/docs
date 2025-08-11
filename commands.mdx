@@ -1,0 +1,440 @@
+---
+title: Commands
+description: "Complete reference for all Velveta Bot commands."
+icon: terminal
+---
+
+## Command Types
+
+Velveta Bot supports multiple command types to suit different user preferences:
+
+- **Slash Commands** (`/command`) - Modern Discord commands with auto-complete
+Velveta supports two command styles:
+- **Context Menu** (Right-click) - Quick actions from user/message menus
+- Slash commands: `/viai`, `/generate`, `/tokens`, `/premium`
+- Prefix commands: `=warn`, `=timeout`, `=kick`, `=ban`, `=verification`
+Essential commands for everyday use.
+## Slash Commands
+
+<AccordionGroup>
+  <Accordion title="/viai" icon="robot">
+    Chat with viAI to generate text. Optionally set `private:true` for an ephemeral reply.
+  </Accordion>
+  <Accordion title="/generate" icon="image">
+    Create an image from a prompt. Quality and size are based on your premium tier.
+  </Accordion>
+  <Accordion title="/tokens" icon="ticket">
+    View daily limit, tokens used, remaining, and reset time.
+  </Accordion>
+  <Accordion title="/premium" icon="star">
+    `status` and `features` subcommands show your tier and benefits.
+  </Accordion>
+</AccordionGroup>
+Comprehensive moderation tools for server management.
+
+<AccordionGroup>
+Prefix-based commands for server moderation. Default prefix: `=`
+    Issue warnings to users with automatic tracking.
+    
+  <Accordion title="=warn" icon="exclamation-triangle">
+    Issue a warning to a user.
+    
+    **Usage:**
+    ```
+    =warn 123456789012345678 Inappropriate language in #general
+    ```
+    Temporarily restrict users from sending messages.
+    
+  <Accordion title="=timeout" icon="clock">
+    Temporarily restrict a user from sending messages.
+    
+    **Usage:**
+    ```
+    =timeout 123456789012345678 1h Spam
+    ```
+    
+    **Durations:** `30s`, `5m`, `1h`, `1d`, `1w` (max)
+    Move users to a restricted jail channel.
+    
+  <Accordion title="=kick" icon="door-open">
+    Remove a user from the server.
+    
+    **Usage:**
+    ```
+    =kick 123456789012345678 Requested to leave
+    ```
+    Permanently ban users from the server.
+    
+  <Accordion title="=ban" icon="ban">
+    Permanently ban a user from the server.
+    
+    **Usage:**
+    ```
+    =ban 123456789012345678 Severe rule violations
+    ```
+    Remove users from the server without banning.
+    
+    **Usage:**
+## Verification Commands
+
+<AccordionGroup>
+  <Accordion title="=verification setup" icon="shield-check">
+    Create roles and a verification channel with interactive buttons.
+  </Accordion>
+  <Accordion title="=verification enable/disable" icon="toggle-right">
+    Toggle verification on or off at any time.
+  </Accordion>
+  <Accordion title="=verify" icon="link">
+    User fallback to receive the verification link if DMs failed.
+  </Accordion>
+</AccordionGroup>
+    
+## Notes
+
+- Some commands require Discord permissions (Kick Members, Ban Members, Moderate Members).
+- Ensure the bot's role is above the target user's highest role for moderation actions.
+- The prefix `=` may be configurable per server; check your server settings if changed.
+    ```
+    
+    **Parameters:**
+    - `prompt` - Your text prompt (required)
+    - `max_tokens` - Response length limit (optional)
+    - `temperature` - Creativity level 0-1 (optional)
+    - `style` - Response style (optional)
+    
+    **Examples:**
+    - `/ai text prompt:"Create a funny server rule"`
+    - `/ai text prompt:"Write announcement about new feature" style:professional`
+  </Accordion>
+
+  <Accordion title="/ai image" icon="image">
+    Generate AI images from text descriptions.
+    
+    **Usage:**
+    ```
+    /ai image prompt:"A cute robot mascot for Discord server"
+    /ai image prompt:"Sunset over mountains" quality:hd size:1024x1024
+    ```
+    
+    **Parameters:**
+    - `prompt` - Image description (required)
+    - `quality` - standard/hd (optional, Premium)
+    - `size` - Image dimensions (optional)
+    - `style` - Art style (optional, Premium)
+    
+    **Examples:**
+    - `/ai image prompt:"Server logo with gaming theme"`
+    - `/ai image prompt:"Fantasy landscape" quality:hd`
+  </Accordion>
+
+  <Accordion title="/ai tokens" icon="coins">
+    Check your AI token usage and limits.
+    
+    **Usage:**
+    ```
+    /ai tokens
+    /ai tokens user:@username
+    ```
+    
+    **Information shown:**
+    - Daily token limit
+    - Tokens used today
+    - Tokens remaining
+    - Usage history
+    - Next reset time
+  </Accordion>
+
+  <Accordion title="/ai enhance" icon="magic">
+    Enhance and improve existing text with AI.
+    
+    **Usage:**
+    ```
+    /ai enhance text:"Make this better" type:grammar
+    /ai enhance text:"Server rules draft" type:professional
+    ```
+    
+    **Enhancement types:**
+    - `grammar` - Fix grammar and spelling
+    - `professional` - Make more professional
+    - `casual` - Make more casual/friendly
+    - `creative` - Add creativity and flair
+  </Accordion>
+</AccordionGroup>
+
+## Verification Commands
+
+Manage server verification and security systems.
+
+<AccordionGroup>
+  <Accordion title="/verification setup" icon="shield-check">
+    Configure verification system for your server.
+    
+    **Usage:**
+    ```
+    /verification setup channel:#verification method:phone
+    /verification setup channel:#verify method:discord roles:@Verified
+    ```
+    
+    **Methods available:**
+    - `phone` - Phone number verification
+    - `discord` - Discord account verification  
+    - `captcha` - CAPTCHA challenges
+    - `hybrid` - Multiple methods combined
+    
+    **Examples:**
+    - `/verification setup channel:#verify method:phone`
+    - `v!verify setup #verification discord`
+  </Accordion>
+
+  <Accordion title="/verification status" icon="clipboard-check">
+    Check verification status of users.
+    
+    **Usage:**
+    ```
+    /verification status user:@username
+    /verification status
+    ```
+    
+    **Information displayed:**
+    - Verification status
+    - Method used
+    - Verification date
+    - Passport details
+    - Risk assessment
+  </Accordion>
+
+  <Accordion title="/verification ban" icon="ban">
+    Globally ban users from verification system.
+    
+    **Usage:**
+    ```
+    /verification ban user:@username reason:"Abuse of system"
+    /verification unban user:123456789 reason:"Appeal approved"
+    ```
+    
+    **Global ban features:**
+    - Cross-server enforcement
+    - Appeal system
+    - Evidence tracking
+    - Automatic detection
+  </Accordion>
+
+  <Accordion title="/verification reset" icon="refresh">
+    Reset user verification status.
+    
+    **Usage:**
+    ```
+    /verification reset user:@username reason:"Technical issue"
+    ```
+    
+    **Use cases:**
+    - Technical problems
+    - Method changes
+    - False positives
+    - User requests
+  </Accordion>
+</AccordionGroup>
+
+## Premium Commands
+
+Exclusive commands for premium users and servers.
+
+<AccordionGroup>
+  <Accordion title="/premium status" icon="star">
+    Check premium status and benefits.
+    
+    **Usage:**
+    ```
+    /premium status
+    /premium status user:@username
+    /premium status server
+    ```
+    
+    **Shows:**
+    - Current tier (Gold/Platinum/Diamond)
+    - Expiration date
+    - Available features
+    - Usage statistics
+  </Accordion>
+
+  <Accordion title="/premium activate" icon="key">
+    Activate premium with license key.
+    
+    **Usage:**
+    ```
+    /premium activate key:YOUR-LICENSE-KEY
+    /premium activate key:YOUR-KEY type:server
+    ```
+    
+    **Activation types:**
+    - `user` - Personal premium
+    - `server` - Server-wide premium
+  </Accordion>
+
+  <Accordion title="/premium features" icon="sparkles">
+    View available premium features.
+    
+    **Usage:**
+    ```
+    /premium features
+    /premium features tier:platinum
+    ```
+    
+    **Feature categories:**
+    - AI enhancements
+    - Advanced moderation
+    - Customization options
+    - Priority support
+  </Accordion>
+</AccordionGroup>
+
+## Utility Commands
+
+Helpful tools and utilities for server management.
+
+<AccordionGroup>
+  <Accordion title="/poll" icon="chart-bar">
+    Create interactive polls with reactions or buttons.
+    
+    **Usage:**
+    ```
+    /poll question:"What's your favorite color?" options:"Red,Blue,Green,Yellow"
+    /poll question:"Movie night?" options:"Friday,Saturday" duration:1d
+    ```
+    
+    **Features:**
+    - Multiple choice options
+    - Timed polls
+    - Anonymous voting
+    - Result analytics
+    
+    **Examples:**
+    - `/poll question:"Server event time?" options:"Weekend,Weekday"`
+    - `v!poll "Pizza or burgers?" "🍕,🍔"`
+  </Accordion>
+
+  <Accordion title="/remind" icon="clock">
+    Set reminders for yourself or others.
+    
+    **Usage:**
+    ```
+    /remind time:1h message:"Check server logs"
+    /remind time:tomorrow message:"Weekly meeting" user:@username
+    ```
+    
+    **Time formats:**
+    - Relative: `1h`, `30m`, `2d`
+    - Absolute: `tomorrow`, `next friday`
+    - Specific: `2024-12-25 10:00`
+  </Accordion>
+
+  <Accordion title="/role" icon="users">
+    Manage user roles and permissions.
+    
+    **Usage:**
+    ```
+    /role add user:@username role:@RoleName
+    /role remove user:@username role:@RoleName
+    /role list user:@username
+    ```
+    
+    **Bulk operations:**
+    - Add roles to multiple users
+    - Remove roles from inactive users
+    - Role synchronization
+    - Permission auditing
+  </Accordion>
+
+  <Accordion title="/channel" icon="hash">
+    Channel management and utilities.
+    
+    **Usage:**
+    ```
+    /channel create name:"new-channel" type:text category:"General"
+    /channel clone channel:#existing-channel name:"backup-channel"
+    /channel slowmode channel:#general duration:5s
+    ```
+    
+    **Channel operations:**
+    - Create/delete channels
+    - Clone channel settings
+    - Manage permissions
+    - Set slowmode
+  </Accordion>
+</AccordionGroup>
+
+## Context Menu Commands
+
+Right-click commands for quick actions.
+
+### User Context Menu
+
+Right-click any user to access these commands:
+
+- **Warn User** - Quickly warn with reason prompt
+- **Timeout User** - Apply timeout with duration selection  
+- **Check Cases** - View user's moderation history
+- **Analyze Risk** - Get user risk assessment
+- **Copy User ID** - Copy user ID to clipboard
+
+### Message Context Menu
+
+Right-click any message for these options:
+
+- **Report Message** - Report inappropriate content
+- **Quote Message** - Quote in current channel
+- **Archive Message** - Save to server archive
+- **Translate Message** - Auto-translate text
+- **Create Embed** - Convert message to embed
+
+## Command Permissions
+
+### Default Permissions
+
+- **Everyone**: `/help`, `/ping`, `/info`, `/poll` (if enabled)
+- **Manage Messages**: `/timeout`, `/warn`, `/cases`
+- **Kick Members**: `/kick`, `/jail`
+- **Ban Members**: `/ban`, `/unban`
+- **Manage Server**: `/verification setup`, `/embed template`
+- **Administrator**: All commands
+
+### Custom Permissions
+
+You can customize command permissions using Discord's built-in slash command permissions:
+
+1. Go to **Server Settings** → **Integrations** → **Velveta Bot**
+2. Find the command you want to modify
+3. Add or remove roles/users
+4. Set channel restrictions
+
+### Permission Overrides
+
+Some commands respect Discord's permission hierarchy:
+- Moderation commands check role positions
+- Users cannot moderate those with higher roles
+- Bot role must be above target roles for role management
+
+## Command Aliases
+
+### Prefix Command Shortcuts
+
+- `v!w` → `v!warn`
+- `v!b` → `v!ban`  
+- `v!k` → `v!kick`
+- `v!t` → `v!timeout`
+- `v!c` → `v!cases`
+
+### Slash Command Auto-complete
+
+Slash commands include intelligent auto-complete for:
+- User mentions and IDs
+- Channel names and IDs
+- Role names and IDs
+- Template names
+- Duration formats
+
+---
+
+<Info>
+See also: [/discord/ai](/discord/ai), [/discord/moderation](/discord/moderation), and [/discord/verification](/discord/verification).
+</Info>

@@ -1,0 +1,104 @@
+---
+title: Moderation
+description: "Advanced moderation tools and user management features."
+icon: shield
+---
+
+## Overview
+
+Velveta provides practical, reliable moderation commands using a simple prefix system. This page documents the commands that exist today in the bot.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="Prefix Commands" icon="keyboard">
+    All moderation uses the `=` prefix by default (server-configurable).
+  </Card>
+  <Card title="Essential Actions" icon="tool">
+    Warn, timeout, kick, and ban with clear syntax and staff feedback.
+  </Card>
+  <Card title="Verification Integration" icon="shield-check">
+    Works alongside the verification system to keep communities safe.
+  </Card>
+  <Card title="Audit-Friendly" icon="file-text">
+    Commands surface reasons and durations for easy logging.
+  </Card>
+</CardGroup>
+
+## Commands
+
+### =warn
+
+Issue a warning to a user by ID or mention.
+
+```
+=warn 123456789012345678 Spamming in #general
+```
+
+### =timeout
+
+Temporarily restrict a user's ability to interact.
+
+```
+=timeout 123456789012345678 30m Excessive pinging
+```
+
+Durations supported: `30s`, `5m`, `1h`, `1d`, `1w` (max).
+
+### =kick
+
+Kick a user from the server.
+
+```
+=kick 123456789012345678 Repeated rule violations
+```
+
+### =ban
+
+Ban a user from the server.
+
+```
+=ban 123456789012345678 Severe harassment
+```
+
+> Tips
+- Include a clear reason; it will be shown to staff and in logs where applicable.
+- Make sure the bot's role is above the target user's highest role.
+- You need appropriate Discord permissions: Kick Members, Ban Members, or Moderate Members.
+
+## Verification Integration
+
+Combine moderation with the verification system for safer onboarding.
+
+```
+=verification setup
+```
+
+Then toggle as needed:
+
+```
+=verification enable
+=verification disable
+```
+
+See the Verification guide for details: [/discord/verification](/discord/verification)
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Be clear and consistent">
+    Document your rules and apply them consistently. Include specific reasons with every action.
+  </Accordion>
+  <Accordion title="Use appropriate durations">
+    Reserve long timeouts or bans for repeated or severe violations. Start with a warn or short timeout when appropriate.
+  </Accordion>
+  <Accordion title="Check permissions">
+    Ensure the bot role is above target users and has Kick, Ban, and Moderate Members permissions.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<Info>
+These commands reflect the current implementation. If you need automation or dashboards, follow our roadmap announcements in the support server.
+</Info>

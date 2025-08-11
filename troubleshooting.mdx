@@ -1,0 +1,751 @@
+---
+title: Troubleshooting
+description: "Common issues and solutions for Velveta Bot users."
+icon: wrench
+---
+
+## Quick Fixes
+
+### Bot Not Responding
+
+Most common issue with simple solutions:
+
+<AccordionGroup>
+  <Accordion title="Check Bot Status">
+    **Verify the bot is online:**
+    - Look for the bot in your member list
+    - Check if it shows as online (green dot)
+  - Try an AI or token command: `/tokens` or `/premium status`
+    
+    **If bot appears offline:**
+    - Check [status page](https://status.velvetaai.com)
+    - Wait 5-10 minutes for reconnection
+    - Contact support if issue persists
+  </Accordion>
+
+  <Accordion title="Permission Issues">
+    **Essential Bot Permissions:**
+    - Send Messages
+    - Embed Links  
+    - Add Reactions
+    - Use Slash Commands
+    - Manage Messages (for moderation)
+    - Manage Roles (for verification)
+    
+    **How to check permissions:**
+    1. Right-click the bot in member list
+    2. Select "Roles" 
+    3. Verify the bot role has required permissions
+    4. Ensure bot role is above target roles
+  </Accordion>
+
+  <Accordion title="Slash Commands Not Working">
+    **Common causes and fixes:**
+    
+    **Commands not appearing:**
+    - Wait 5-10 minutes after bot invite
+    - Re-invite bot with updated permissions
+    - Check server integration settings
+    
+    **Commands appear but don't work:**
+    - Verify bot has "Use Slash Commands" permission
+    - Check channel-specific permission overrides
+    - Try using commands in different channels
+  </Accordion>
+</AccordionGroup>
+
+## Command Issues
+
+### Slash Commands
+
+<AccordionGroup>
+  <Accordion title="Commands Not Appearing">
+    **Troubleshooting steps:**
+    
+    1. **Wait for sync:** Discord can take up to 1 hour to sync commands
+    2. **Check permissions:** Bot needs "Use Slash Commands" permission
+    3. **Re-invite bot:** Use updated invite link with correct permissions
+    4. **Clear Discord cache:** 
+       - Windows: `Ctrl + Shift + R`
+       - Mac: `Cmd + Shift + R`
+    
+  If commands still don't appear after an hour, re-invite the bot with Application Commands scope.
+  </Accordion>
+
+  <Accordion title="Command Errors">
+    **Common error messages:**
+    
+    **"This interaction failed"**
+    - Bot may be experiencing high latency
+    - Try the command again in a few seconds
+    - Check bot status page
+    
+    **"Missing permissions"**
+    - Bot lacks required permissions for the action
+    - Check role hierarchy and permissions
+    - Verify channel-specific overrides
+    
+    **"Invalid user/channel/role"**
+    - Mentioned user/channel/role doesn't exist
+    - Check spelling and availability
+    - Ensure you have permission to mention targets
+  </Accordion>
+
+  <Accordion title="Slow Response Times">
+    **Optimization tips:**
+    
+    **Server-side issues:**
+    - High Discord API latency
+    - Database connection delays
+    - Heavy server load
+    
+    **Check response time:**
+    ```
+    /ping
+    ```
+    
+    **If consistently slow (>5 seconds):**
+    - Report to support with server ID
+    - Include command and timestamp
+    - Provide screenshot of `/ping` results
+  </Accordion>
+</AccordionGroup>
+
+### Prefix Commands
+
+<AccordionGroup>
+  <Accordion title="Prefix Not Working">
+  **Default prefix:** `=`
+    
+    **Common issues:**
+    - Using wrong prefix (`!` vs `v!`)
+    - Extra spaces (`v! ping` vs `v!ping`)
+    - Autocorrect changing prefix
+    
+  If your server changed the prefix, ask an admin for the configured value.
+  </Accordion>
+
+  <Accordion title="Arguments Not Recognized">
+    **Proper command formatting:**
+    
+  **Correct:**
+  ```
+  =warn 123456789012345678 This is the reason
+  =ban 123456789012345678 Spam messages
+  ```
+    
+  **Incorrect:**
+  ```
+  =warn user reason  (missing ID/mention)
+  =ban @user "reason" (quotes not required)
+  ```
+    
+    **Multi-word arguments:**
+    - Use spaces normally, no quotes needed
+    - Bot automatically handles multi-word reasons
+  </Accordion>
+</AccordionGroup>
+
+## Embed Issues
+
+### Embeds Not Displaying
+
+<AccordionGroup>
+  <Accordion title="Permission Problems">
+    **Required permissions:**
+    - Send Messages
+    - Embed Links
+    - View Channel
+    
+    **Check embed permissions:**
+    1. Go to Channel Settings → Permissions
+    2. Find your bot role
+    3. Ensure "Embed Links" is enabled (green checkmark)
+    4. Check for red X's that might override
+  </Accordion>
+
+  <Accordion title="Syntax Errors">
+    **Common embed syntax mistakes:**
+    
+    **Missing separators:**
+    ```
+    ❌ {title: Hello}{description: World}
+    ✅ {title: Hello}$v{description: World}
+    ```
+    
+    **Unmatched braces:**
+    ```
+    ❌ {title: Hello World
+    ✅ {title: Hello World}
+    ```
+    
+    **Invalid colors:**
+    ```
+    ❌ {color: blue}
+    ✅ {color: #0000FF}
+    ```
+    
+  Post in a staff-only test channel to verify formatting before sending broadly.
+  </Accordion>
+
+  <Accordion title="Variable Issues">
+    **Variable troubleshooting:**
+    
+    **Variables not working:**
+    - Check variable spelling: `{user}` not `{username}`
+    - Ensure proper context: `{guild.name}` only works in servers
+    - Variables are case-sensitive
+    
+  Test variables by posting in a server channel so context (user/guild) is available.
+    
+    **Common variables:**
+    - `{user}` - User's display name
+    - `{user.mention}` - @mention user
+    - `{guild.name}` - Server name
+    - `{channel.name}` - Channel name
+  </Accordion>
+</AccordionGroup>
+
+### Button Problems
+
+<AccordionGroup>
+  <Accordion title="Buttons Not Working">
+    **Button syntax check:**
+    ```
+    ✅ {button: green && Click Me && custom_id}
+    ❌ {button: green & Click Me & custom_id}
+    ```
+    
+    **Required elements:**
+    - Button style (green, blue, red, grey, link)
+    - Button label (text displayed)
+    - Custom ID or URL (for functionality)
+    
+    **Button limitations:**
+    - Maximum 5 buttons per row
+    - Maximum 25 total buttons per message
+    - Custom ID must be unique
+  </Accordion>
+
+  <Accordion title="Button Interactions Failing">
+    **Common causes:**
+    
+    **Interaction timeout:**
+    - Buttons expire after 15 minutes
+    - Restart bot to refresh interactions
+    
+    **Missing handlers:**
+    - Bot may not have handler for custom ID
+    - Check button custom ID spelling
+    - Report unknown custom IDs to support
+    
+    **Permission issues:**
+    - Bot needs permission to respond
+    - Check channel permissions for bot
+  </Accordion>
+</AccordionGroup>
+
+## Verification Issues
+
+### Users Can't Verify
+
+<AccordionGroup>
+  <Accordion title="Verification Portal Problems">
+    **Portal not loading:**
+    - Check if verification is properly setup
+    - Verify web portal is accessible
+    - Clear browser cache and cookies
+    - Try different browser or device
+    
+  If setup seems incomplete, re-run:
+  ```
+  =verification setup
+  ```
+  </Accordion>
+
+  <Accordion title="Phone Verification Issues">
+    **Common phone verification problems:**
+    
+    **SMS not received:**
+    - Check phone number format (+1234567890)
+    - Verify carrier supports SMS
+    - Check spam/blocked messages
+    - Wait 5-10 minutes for delivery
+    
+    **Invalid phone number:**
+    - Must include country code
+    - No spaces or special characters
+    - Landlines may not work
+    - VoIP numbers often blocked
+    
+  If a user didn’t receive the link in DM, have them run `=verify` in the verification channel.
+  </Accordion>
+
+  <Accordion title="Discord Verification Failing">
+    **Account analysis issues:**
+    
+    **Account too new:**
+    - Minimum age requirements not met
+    - Adjust settings or use manual review
+    
+    **Missing profile elements:**
+    - No custom avatar
+    - Empty bio/about section
+    - No server activity
+    
+  Advanced verification tuning is not available yet; use manual review for edge cases.
+  </Accordion>
+</AccordionGroup>
+
+### Role Assignment Problems
+
+<AccordionGroup>
+  <Accordion title="Roles Not Being Added">
+    **Role hierarchy check:**
+    - Bot role must be above verification roles
+    - Check role positions in Server Settings → Roles
+    - Move bot role higher if needed
+    
+    **Permission verification:**
+    - Bot needs "Manage Roles" permission
+    - Check for channel permission overrides
+    - Verify role assignment settings
+    
+  If issues persist, re-run `=verification setup` to recreate wiring.
+  </Accordion>
+
+  <Accordion title="Wrong Roles Added">
+    **Configuration check:**
+    ```
+    /verification roles verified:@Member unverified:@Unverified
+    ```
+    
+    **Common mistakes:**
+    - Swapped verified/unverified roles
+    - Typos in role names
+    - Case sensitivity issues
+    
+    **Reset role configuration:**
+    ```
+    /verification setup roles
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## AI & Premium Issues
+
+### AI Commands Not Working
+
+<AccordionGroup>
+  <Accordion title="Token Limit Reached">
+    **Check token status:**
+    ```
+  /tokens
+    ```
+    
+    **Solutions:**
+    - Wait for daily reset (midnight UTC)
+    - Upgrade to higher premium tier
+    - Optimize prompt length
+    - Use fewer AI features per day
+    
+    **Token reset time:**
+    - Resets daily at 00:00 UTC
+    - Premium users get higher limits
+    - Track usage to avoid hitting limits
+  </Accordion>
+
+  <Accordion title="Poor AI Responses">
+    **Improve prompt quality:**
+    
+    **Better prompts:**
+    ```
+    ❌ "write something"
+    ✅ "Write a professional announcement for our gaming server about a tournament"
+    ```
+    
+    **Prompt optimization tips:**
+    - Be specific about desired output
+    - Include context and purpose
+    - Specify tone and style
+    - Mention target audience
+    - Provide examples when helpful
+  </Accordion>
+
+  <Accordion title="Image Generation Fails">
+    **Common causes:**
+    
+    **Content policy violations:**
+    - NSFW content blocked
+    - Violent content rejected
+    - Copyrighted material filtered
+    
+    **Technical issues:**
+    - Server overload
+    - Token limit exceeded
+    - Invalid image parameters
+    
+    **Improve image prompts:**
+    ```
+    ✅ "A friendly robot mascot for Discord server, cartoon style"
+    ❌ "robot" (too vague)
+    ```
+  </Accordion>
+</AccordionGroup>
+
+### Premium Subscription Issues
+
+<AccordionGroup>
+  <Accordion title="Premium Not Activating">
+    **Activation troubleshooting:**
+    
+    **Check subscription status:**
+    ```
+    /premium status
+    ```
+    
+    **Common issues:**
+    - Payment processing delay (up to 24 hours)
+    - Wrong Discord account linked
+    - Subscription on wrong server
+    
+  If status seems delayed, check again later:
+  ```
+  /premium status
+  ```
+  </Accordion>
+
+  <Accordion title="Payment Problems">
+    **Payment troubleshooting:**
+    
+    **Declined payments:**
+    - Verify card details and expiration
+    - Check available balance
+    - Contact your bank about international charges
+    - Try different payment method
+    
+    **Billing issues:**
+    - Check spam folder for invoices
+    - Verify billing address
+    - Update payment method before expiration
+  </Accordion>
+
+  <Accordion title="Feature Access Issues">
+    **Premium feature problems:**
+    
+    **Features not unlocking:**
+    - Wait 5-10 minutes after activation
+    - Restart Discord client
+    - Check feature-specific requirements
+    
+    **Partial feature access:**
+    - Verify correct premium tier
+    - Check server vs user premium
+    - Review feature limitations
+  </Accordion>
+</AccordionGroup>
+
+## Moderation Problems
+
+### Cases Not Saving
+
+<AccordionGroup>
+  <Accordion title="Database Connection Issues">
+    **Symptoms:**
+    - Commands work but no cases created
+    - Cases missing from history
+    - Inconsistent logging
+    
+    **Temporary workarounds:**
+    - Document actions manually
+    - Use Discord's built-in audit log
+    - Screenshot important actions
+    
+    **Report to support with:**
+    - Server ID
+    - Timestamp of missing cases
+    - Commands used
+  </Accordion>
+
+  <Accordion title="Permission Conflicts">
+    **Moderation permission issues:**
+    
+    **Bot lacks permissions:**
+    - Timeout Members (for timeouts)
+    - Kick Members (for kicks)
+    - Ban Members (for bans)
+    - Manage Messages (for message deletion)
+    
+    **Check moderation permissions:**
+    ```
+    /modtools permissions
+    ```
+  </Accordion>
+</AccordionGroup>
+
+### User Analysis Problems
+
+<AccordionGroup>
+  <Accordion title="Incorrect Risk Scores">
+    **Risk score troubleshooting:**
+    
+    **Scores seem wrong:**
+    - Check all connected databases
+    - Verify case history accuracy
+    - Consider cross-server data
+    
+    **Refresh user analysis:**
+    ```
+    /analyze user:@username refresh:true
+    ```
+    
+    **Risk score factors:**
+    - Recent infractions (higher weight)
+    - Action severity (bans > warns)
+    - Successful appeals (reduce score)
+    - Account age and verification
+  </Accordion>
+
+  <Accordion title="Missing Case History">
+    **Case visibility issues:**
+    
+    **Cases not showing:**
+    - Database sync delays
+    - Permission restrictions
+    - Server-specific case filtering
+    
+    **Force case refresh:**
+    ```
+    /cases refresh user:@username
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Performance Issues
+
+### Slow Bot Response
+
+<AccordionGroup>
+  <Accordion title="Network Latency">
+    **Check connection quality:**
+    ```
+    /ping
+    ```
+    
+    **Response time indicators:**
+    - < 100ms: Excellent
+    - 100-300ms: Good
+    - 300-1000ms: Acceptable
+    - > 1000ms: Poor (report issue)
+    
+    **Improve response times:**
+    - Use commands during off-peak hours
+    - Avoid complex operations
+    - Report persistent slowness
+  </Accordion>
+
+  <Accordion title="Server Load">
+    **High server load symptoms:**
+    - Delayed command responses
+    - Intermittent failures
+    - Timeout errors
+    
+    **Check server status:**
+    - Visit [status.velvetaai.com](https://status.velvetaai.com)
+    - Check Discord status page
+    - Monitor support server announcements
+  </Accordion>
+</AccordionGroup>
+
+## Error Codes
+
+### Common Error Messages
+
+<AccordionGroup>
+  <Accordion title="VLV-001: Permission Denied">
+    **Cause:** Bot lacks required permissions for action
+    
+    **Solutions:**
+    - Check bot role permissions
+    - Verify role hierarchy
+    - Review channel permission overrides
+    
+    **Required permissions vary by command:**
+    - Moderation: Manage Messages, Timeout/Kick/Ban Members
+    - Verification: Manage Roles
+    - Embeds: Send Messages, Embed Links
+  </Accordion>
+
+  <Accordion title="VLV-002: User Not Found">
+    **Cause:** Specified user doesn't exist or isn't accessible
+    
+    **Solutions:**
+    - Check user spelling and format
+    - Verify user is in the server
+    - Use user ID instead of mention
+    - Ensure user hasn't blocked the bot
+  </Accordion>
+
+  <Accordion title="VLV-003: Database Error">
+    **Cause:** Temporary database connectivity issue
+    
+    **Solutions:**
+    - Wait 5-10 minutes and retry
+    - Command may have succeeded despite error
+    - Check action results manually
+    - Report persistent errors to support
+  </Accordion>
+
+  <Accordion title="VLV-004: Rate Limited">
+    **Cause:** Too many commands in short time
+    
+    **Solutions:**
+    - Wait 30-60 seconds before retrying
+    - Space out commands
+    - Consider premium for higher limits
+    - Use bulk operations when available
+  </Accordion>
+
+  <Accordion title="VLV-005: Premium Required">
+    **Cause:** Feature requires premium subscription
+    
+    **Solutions:**
+    - Upgrade to premium tier
+    - Use free tier alternatives
+    - Start premium trial
+    - Check feature documentation for requirements
+  </Accordion>
+</AccordionGroup>
+
+## Getting Help
+
+### Self-Help Resources
+
+<CardGroup cols={2}>
+  <Card title="Documentation" icon="book">
+    **Comprehensive Guides**
+    - Command reference
+    - Setup tutorials  
+    - Feature explanations
+    - Best practices
+    
+    [Browse Documentation](/client)
+  </Card>
+  
+  <Card title="Status Page" icon="activity">
+    **Service Status**
+    - Real-time status updates
+    - Maintenance schedules
+    - Incident reports
+    - Performance metrics
+    
+    [Check Status](https://status.velvetaai.com)
+  </Card>
+  
+  <Card title="Community Support" icon="users">
+    **Community Help**
+    - User forums
+    - Discord support server
+    - Community Q&A
+    - User guides
+    
+    [Join Community](https://discord.gg/velveta)
+  </Card>
+  
+  <Card title="Video Tutorials" icon="play">
+    **Visual Learning**
+    - Setup walkthroughs
+    - Feature demonstrations
+    - Troubleshooting guides
+    - Best practice examples
+    
+    [Watch Tutorials](https://youtube.com/@velvetaai)
+  </Card>
+</CardGroup>
+
+### Contact Support
+
+<AccordionGroup>
+  <Accordion title="Support Ticket">
+    **Create a support ticket:**
+    ```
+    /support ticket create
+    ```
+    
+    **Include in your ticket:**
+    - Detailed problem description
+    - Steps to reproduce
+    - Error messages or screenshots
+    - Server ID and user ID
+    - Bot permission screenshots
+    
+    **Response times:**
+    - Free users: 48-72 hours
+    - Premium users: 12-24 hours
+    - Enterprise: 4-12 hours
+  </Accordion>
+
+  <Accordion title="Emergency Support">
+    **For critical issues affecting large servers:**
+    
+    **Emergency criteria:**
+    - Security vulnerabilities
+    - Data loss incidents
+    - Service outages
+    - Urgent moderation needs
+    
+    **Emergency contact:**
+    - Discord: @emergency in support server
+    - Email: emergency@velvetaai.com
+    - Phone: Available for Enterprise customers
+  </Accordion>
+
+  <Accordion title="Feature Requests">
+    **Suggest new features:**
+    ```
+    /feedback feature
+    ```
+    
+    **Feature request tips:**
+    - Explain use case clearly
+    - Describe expected behavior
+    - Consider similar features
+    - Explain benefits to community
+    
+    **Feature development:**
+    - Premium users get priority
+    - Popular requests fast-tracked
+    - Community voting system
+    - Regular feature updates
+  </Accordion>
+</AccordionGroup>
+
+### Debug Information
+
+When contacting support, include this debug information:
+
+```
+/debug info
+```
+
+**Debug output includes:**
+- Bot version and status
+- Server configuration
+- Permission summary
+- Recent error logs
+- Performance metrics
+
+**Manual debug checklist:**
+- [ ] Bot appears online
+- [ ] Required permissions granted
+- [ ] Role hierarchy correct
+- [ ] Commands tested in multiple channels
+- [ ] Error messages documented
+- [ ] Screenshots captured
+- [ ] Recent changes noted
+
+---
+
+<Warning>
+If you're experiencing a critical security issue or potential data breach, contact emergency support immediately at emergency@velvetaai.com or ping @emergency in our support Discord server.
+</Warning>

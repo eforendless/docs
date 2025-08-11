@@ -1,0 +1,444 @@
+---
+title: Variables
+description: "Dynamic placeholders for personalized bot responses."
+icon: variable
+---
+
+## Overview
+
+Variables are dynamic placeholders that get replaced with actual values when your commands are executed. They allow you to create personalized and contextual responses that adapt to different users, servers, and situations.
+
+## User Variables
+
+Access information about the user who triggered the command.
+
+<AccordionGroup>
+    <Accordion title="Basic User Info">
+        - `{user}` - User's display name
+        - `{user.mention}` - Mention the user (@User)
+        - `{user.tag}` - Username with discriminator (User#1234)
+        - `{user.username}` - Username only
+        - `{user.discriminator}` - Discriminator only (#1234)
+        - `{user.id}` - User's Discord ID
+        
+        <CodeGroup>
+            ```javascript Example
+            Welcome {user.mention} to {guild.name}!
+            ```
+            
+            ```javascript Output
+            Welcome @JohnDoe to My Awesome Server!
+            ```
+        </CodeGroup>
+    </Accordion>
+    
+    <Accordion title="User Avatar & Profile">
+        - `{user.avatar}` - User's avatar URL
+        - `{user.banner}` - User's banner URL
+        - `{user.accent_color}` - User's accent color
+        - `{user.created_at}` - Account creation date
+        - `{user.joined_at}` - Server join date
+        
+        <CodeGroup>
+            ```javascript Example
+            {thumbnail: {user.avatar}}$v{description: {user} joined on {user.joined_at}}
+            ```
+        </CodeGroup>
+    </Accordion>
+    
+    <Accordion title="User Status">
+        - `{user.status}` - Online status (online, idle, dnd, offline)
+        - `{user.activity}` - Current activity
+        - `{user.premium}` - Premium status (true/false)
+        - `{user.bot}` - Bot status (true/false)
+        - `{user.verified}` - Verification status
+        
+        <CodeGroup>
+            ```javascript Example
+            {user} is currently {user.status}
+            ```
+        </CodeGroup>
+    </Accordion>
+</AccordionGroup>
+
+## Server Variables
+
+Access information about the current server (guild).
+
+<AccordionGroup>
+    <Accordion title="Basic Server Info">
+        - `{guild}` or `{guild.name}` - Server name
+        - `{guild.id}` - Server ID
+        - `{guild.description}` - Server description
+        - `{guild.owner}` - Server owner's name
+        - `{guild.owner.mention}` - Mention server owner
+        
+        <CodeGroup>
+            ```javascript Example
+            Welcome to {guild.name}! Owned by {guild.owner}
+            ```
+        </CodeGroup>
+    </Accordion>
+    
+    <Accordion title="Server Assets">
+        - `{guild.icon}` - Server icon URL
+        - `{guild.banner}` - Server banner URL
+        - `{guild.splash}` - Server invite splash URL
+        - `{guild.discovery_splash}` - Discovery splash URL
+        
+        <CodeGroup>
+            ```javascript Example
+            {thumbnail: {guild.icon}}$v{image: {guild.banner}}
+            ```
+        </CodeGroup>
+    </Accordion>
+    
+    <Accordion title="Server Stats">
+        - `{guild.member_count}` - Total member count
+        - `{guild.online_count}` - Online member count
+        - `{guild.role_count}` - Number of roles
+        - `{guild.channel_count}` - Number of channels
+        - `{guild.boost_level}` - Server boost level
+        - `{guild.boost_count}` - Number of boosts
+        
+        <CodeGroup>
+            ```javascript Example
+            📊 {guild.name} has {guild.member_count} members with {guild.online_count} online
+            ```
+        </CodeGroup>
+    </Accordion>
+</AccordionGroup>
+
+## Channel Variables
+
+Access information about the current channel.
+
+<AccordionGroup>
+    <Accordion title="Channel Info">
+        - `{channel}` or `{channel.name}` - Channel name
+        - `{channel.mention}` - Mention channel (#channel)
+        - `{channel.id}` - Channel ID
+        - `{channel.topic}` - Channel topic
+        - `{channel.type}` - Channel type
+        
+        <CodeGroup>
+            ```javascript Example
+            This message was sent in {channel.mention}
+            ```
+        </CodeGroup>
+    </Accordion>
+    
+    <Accordion title="Channel Stats">
+        - `{channel.created_at}` - Channel creation date
+        - `{channel.position}` - Channel position
+        - `{channel.slowmode}` - Slowmode duration
+        - `{channel.nsfw}` - NSFW status (true/false)
+        
+        <CodeGroup>
+            ```javascript Example
+            Channel {channel.name} was created on {channel.created_at}
+            ```
+        </CodeGroup>
+    </Accordion>
+</AccordionGroup>
+
+## Role Variables
+
+Access information about user roles.
+
+<AccordionGroup>
+    <Accordion title="Primary Role">
+        - `{user.role}` - Highest role name
+        - `{user.role.mention}` - Mention highest role
+        - `{user.role.color}` - Role color (hex)
+        - `{user.role.position}` - Role position
+        
+        <CodeGroup>
+            ```javascript Example
+            {color: {user.role.color}}$v{description: {user} has the {user.role} role}
+            ```
+        </CodeGroup>
+    </Accordion>
+    
+    <Accordion title="Role Collections">
+        - `{user.roles}` - All role names (comma-separated)
+        - `{user.roles.mention}` - All role mentions
+        - `{user.roles.count}` - Number of roles
+        
+        <CodeGroup>
+            ```javascript Example
+            {user} has {user.roles.count} roles: {user.roles}
+            ```
+        </CodeGroup>
+    </Accordion>
+</AccordionGroup>
+
+## Date & Time Variables
+
+Access current date and time information.
+
+<AccordionGroup>
+    <Accordion title="Current Date/Time">
+        - `{date}` - Current date (MM/DD/YYYY)
+        - `{time}` - Current time (HH:MM AM/PM)
+        - `{datetime}` - Full date and time
+        - `{timestamp}` - Unix timestamp
+        - `{iso}` - ISO 8601 format
+        
+        <CodeGroup>
+            ```javascript Example
+            Today is {date} and the time is {time}
+            ```
+        </CodeGroup>
+    </Accordion>
+    
+    <Accordion title="Formatted Dates">
+        - `{date:short}` - Short date format
+        - `{date:long}` - Long date format
+        - `{date:relative}` - Relative time (2 hours ago)
+        - `{time:24h}` - 24-hour format
+        
+        <CodeGroup>
+            ```javascript Example
+            Message sent {date:relative}
+            ```
+        </CodeGroup>
+    </Accordion>
+</AccordionGroup>
+
+## Moderation Variables
+
+Special variables for moderation commands.
+
+<AccordionGroup>
+    <Accordion title="Case Information">
+        - `{case.id}` - Case ID
+        - `{case.type}` - Action type (warn, ban, etc.)
+        - `{case.reason}` - Moderation reason
+        - `{case.moderator}` - Moderator name
+        - `{case.duration}` - Action duration
+        
+        <CodeGroup>
+            ```javascript Example
+            Case #{case.id}: {case.type} issued by {case.moderator}
+            ```
+        </CodeGroup>
+    </Accordion>
+    
+    <Accordion title="Target User">
+        - `{target}` - Target user name
+        - `{target.mention}` - Mention target user
+        - `{target.id}` - Target user ID
+        - `{target.reason}` - Custom reason
+        
+        <CodeGroup>
+            ```javascript Example
+            {target.mention} was warned for: {target.reason}
+            ```
+        </CodeGroup>
+    </Accordion>
+</AccordionGroup>
+
+## Conditional Variables
+
+Create dynamic content based on conditions.
+
+<AccordionGroup>
+    <Accordion title="If Statements">
+        Use conditional logic to show different content:
+        
+        ```javascript Syntax
+        {if:condition:true_value:false_value}
+        ```
+        
+        <CodeGroup>
+            ```javascript Example
+            {if:{user.premium}:Welcome VIP member!:Welcome to the server!}
+            ```
+            
+            ```javascript Nested Conditions
+            {if:{user.verified}:{if:{user.premium}:Verified VIP:Verified Member}:Unverified User}
+            ```
+        </CodeGroup>
+    </Accordion>
+    
+    <Accordion title="Conditions">
+        Available conditions for if statements:
+        
+        - `{user.premium}` - User has premium
+        - `{user.verified}` - User is verified
+        - `{user.bot}` - User is a bot
+        - `{guild.premium}` - Server has premium
+        - `{channel.nsfw}` - Channel is NSFW
+        
+        <CodeGroup>
+            ```javascript Example
+            {if:{guild.premium}:This server has premium features!:Upgrade to unlock premium!}
+            ```
+        </CodeGroup>
+    </Accordion>
+</AccordionGroup>
+
+## Math Variables
+
+Perform calculations with variables.
+
+<AccordionGroup>
+    <Accordion title="Basic Math">
+        - `{math:add:5:3}` - Addition (8)
+        - `{math:sub:10:4}` - Subtraction (6)
+        - `{math:mul:6:7}` - Multiplication (42)
+        - `{math:div:15:3}` - Division (5)
+        
+        <CodeGroup>
+            ```javascript Example
+            You have {math:add:{user.points}:100} total points!
+            ```
+        </CodeGroup>
+    </Accordion>
+    
+    <Accordion title="Advanced Math">
+        - `{math:mod:10:3}` - Modulo (1)
+        - `{math:pow:2:3}` - Power (8)
+        - `{math:sqrt:16}` - Square root (4)
+        - `{math:round:3.7}` - Round (4)
+        
+        <CodeGroup>
+            ```javascript Example
+            Progress: {math:round:{math:mul:{user.progress}:100}}%
+            ```
+        </CodeGroup>
+    </Accordion>
+</AccordionGroup>
+
+## Random Variables
+
+Generate random content for dynamic responses.
+
+<AccordionGroup>
+    <Accordion title="Random Selection">
+        - `{random:option1,option2,option3}` - Pick random option
+        - `{random:1-100}` - Random number in range
+        - `{random.color}` - Random hex color
+        
+        <CodeGroup>
+            ```javascript Example
+            {random:Welcome,Hello,Greetings} {user.mention}!
+            ```
+            
+            ```javascript Random Color
+            {color: {random.color}}$v{title: Random colored embed!}
+            ```
+        </CodeGroup>
+    </Accordion>
+    
+    <Accordion title="Random Lists">
+        - `{random.emoji}` - Random emoji
+        - `{random.quote}` - Random inspirational quote
+        - `{random.fact}` - Random fun fact
+        
+        <CodeGroup>
+            ```javascript Example
+            {random.emoji} Daily fact: {random.fact}
+            ```
+        </CodeGroup>
+    </Accordion>
+</AccordionGroup>
+
+## Custom Variables
+
+Create and use custom server-specific variables.
+
+<AccordionGroup>
+    <Accordion title="Server Variables">
+        Set custom variables for your server:
+        
+        ```
+        /variable set name:server_motto value:We are awesome!
+        ```
+        
+        Then use in embeds:
+        ```javascript
+        {description: {custom:server_motto}}
+        ```
+    </Accordion>
+    
+    <Accordion title="User Variables">
+        Set custom variables for users:
+        
+        ```
+        /variable set user:@user name:nickname value:SuperGamer
+        ```
+        
+        <CodeGroup>
+            ```javascript Usage
+            {if:{custom.user:nickname}:Hey {custom.user:nickname}!:Hello {user}!}
+            ```
+        </CodeGroup>
+    </Accordion>
+</AccordionGroup>
+
+## Variable Formatting
+
+Format variables for better presentation.
+
+<AccordionGroup>
+    <Accordion title="Text Formatting">
+        - `{user.upper}` - UPPERCASE
+        - `{user.lower}` - lowercase
+        - `{user.title}` - Title Case
+        - `{user.length}` - Character count
+        
+        <CodeGroup>
+            ```javascript Example
+            Hello {user.upper}! Your name has {user.length} characters.
+            ```
+        </CodeGroup>
+    </Accordion>
+    
+    <Accordion title="Number Formatting">
+        - `{guild.member_count:comma}` - 1,234
+        - `{user.points:ordinal}` - 1st, 2nd, 3rd
+        - `{number:percentage}` - 75%
+        
+        <CodeGroup>
+            ```javascript Example
+            {guild.name} has {guild.member_count:comma} members!
+            ```
+        </CodeGroup>
+    </Accordion>
+</AccordionGroup>
+
+## Best Practices
+
+### Performance Tips
+
+1. **Minimize Complex Variables**: Use simple variables when possible
+2. **Cache Custom Variables**: Avoid frequent custom variable lookups
+3. **Test Before Deployment**: Always test complex variable combinations
+
+### Security Considerations
+
+1. **Sanitize User Input**: Custom variables are automatically sanitized
+2. **Avoid Sensitive Data**: Don't store sensitive information in variables
+3. **Validate Permissions**: Check user permissions before using certain variables
+
+### Common Patterns
+
+<CodeGroup>
+    ```javascript Welcome Message
+    {title: Welcome to {guild.name}!}$v{description: Hello {user.mention}, you're member #{guild.member_count}!}$v{thumbnail: {user.avatar}}
+    ```
+    
+    ```javascript Moderation Log
+    {title: Moderation Action}$v{description: {target.mention} was {case.type} by {case.moderator}}$v{field: Reason && {case.reason}}$v{timestamp}
+    ```
+    
+    ```javascript Server Stats
+    {title: {guild.name} Statistics}$v{field: Members && {guild.member_count:comma} && inline}$v{field: Online && {guild.online_count:comma} && inline}$v{field: Boost Level && {guild.boost_level} && inline}
+    ```
+</CodeGroup>
+
+---
+
+<Info>Variables are processed in real-time when commands are executed. See related examples throughout the docs under [/discord](/discord).</Info>

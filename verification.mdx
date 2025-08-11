@@ -1,0 +1,577 @@
+---
+title: Verification
+description: "Advanced verification system to protect your server from raids and spam."
+icon: shield-check
+---
+
+## Overview
+
+Velveta Bot's verification system provides multiple layers of protection against raiders, spam bots, and malicious users. Our system combines traditional verification methods with advanced AI analysis and cross-server intelligence.
+
+## Verification Methods
+
+Choose from multiple verification methods or combine them for enhanced security:
+
+<CardGroup cols={2}>
+  <Card title="Phone Verification" icon="phone">
+    **Most Secure**
+    - Requires valid phone number
+    - SMS verification code
+    - Prevents alt accounts
+    - Highest success rate
+  </Card>
+  
+  <Card title="Discord Verification" icon="discord">
+    **Balanced Security**
+    - Uses Discord account age
+    Velveta's verification system helps keep raiders and spam bots out by routing new members through a verification flow and assigning roles automatically.
+    - Analyzes account patterns
+    - Quick setup process
+  </Card>
+  
+  <Card title="CAPTCHA Challenge" icon="puzzle-piece">
+    **Bot Prevention**
+    - Visual puzzle solving
+    - Prevents automated bots
+    - Accessibility options
+    - Instant verification
+  </Card>
+  
+  <Card title="Hybrid Method" icon="layers">
+    **Maximum Protection**
+    - Combines multiple methods
+    - Risk-based verification
+    - Adaptive security levels
+    - Premium feature
+  </Card>
+</CardGroup>
+
+## Setup Guide
+
+### Basic Setup
+
+Get started with verification in just a few commands:
+
+<Steps>
+  <Step title="Create Verification Channel">
+    Create a dedicated channel for verification:
+    ```
+  =verification setup
+    ```
+    
+    **Channel Recommendations:**
+    - Name it `#verification` or `#verify`
+    - Place it at the top of your channel list
+    - Set appropriate permissions (read-only for unverified)
+  </Step>
+
+  <Step title="Choose Verification Method">
+    Select your preferred verification method:
+    ```
+  Use the interactive buttons presented by `=verification setup` to enable/disable verification.
+    ```
+    
+    **Method Comparison:**
+    - **Phone**: Most secure, requires phone number
+    - **Discord**: Good balance, uses account analysis
+    - **CAPTCHA**: Bot prevention, quick verification
+  </Step>
+
+  <Step title="Configure Roles">
+    Set up verified and unverified roles:
+    ```
+  Roles are created automatically when enabling verification (Verified/Unverified). You can rename them later.
+    ```
+    
+    **Role Setup Tips:**
+    - Create roles if they don't exist
+    - Set appropriate permissions
+    - Consider role colors for visibility
+  </Step>
+
+  <Step title="Test the System">
+    Test verification with an alt account:
+    ```
+  Use `=verify` in the verification channel to receive your verification link if DM fails.
+    ```
+    
+    Ensure the process works smoothly before going live.
+  </Step>
+</Steps>
+
+### Advanced Configuration
+
+#### Custom Welcome Messages
+
+Create personalized verification messages:
+
+Welcome and follow-up messages can be configured via the verification settings and embed system. Use the `=embed` premium commands to create rich messages and reference them in your welcome/verification channels.
+
+**Message Features:**
+- Custom embed styling
+- Server branding
+- Multiple languages
+- Interactive buttons
+
+#### Verification Timeouts
+
+Set time limits for verification completion:
+
+Admins may configure timeouts and kick actions for unverified users using server settings. If supported in your build, consult the moderation/logs setup.
+
+**Timeout Options:**
+- **Duration**: 1h to 7d
+- **Actions**: kick, ban, or role removal
+- **Warnings**: Send reminders before timeout
+
+#### Role Management
+
+Advanced role configuration:
+
+Verified and Unverified roles are managed automatically on enable. Advanced role routing can be handled through moderation automations and welcome flows.
+
+**Role Types:**
+- **Verified**: Roles added after successful verification
+- **Unverified**: Roles for users awaiting verification
+- **Temporary**: Roles during verification process
+
+## Phone Verification
+
+### Setup Process
+
+The most secure verification method using phone numbers:
+
+<AccordionGroup>
+  <Accordion title="Configuration">
+    Enable verification with `=verification setup`, then connect your verification provider via the web dashboard if using phone verification.
+    
+  **Integration:**
+  - Phone verification is handled via our verification web portal
+  - Server connects through a secure webhook to grant roles upon success
+    
+    **Required Settings:**
+    - API credentials
+    - Phone number formatting
+    - Country restrictions (optional)
+  </Accordion>
+
+  <Accordion title="User Experience">
+    **Verification Flow:**
+    1. User clicks verification button
+    2. Redirected to web portal
+    3. Enters phone number
+    4. Receives SMS code
+    5. Enters code to verify
+    6. Automatic role assignment
+    
+    **Security Features:**
+    - Phone number encryption
+    - Rate limiting (prevent spam)
+    - Disposable number detection
+    - VoIP number filtering
+  </Accordion>
+
+  <Accordion title="Privacy & Security">
+    **Data Protection:**
+    - Phone numbers are hashed
+    - No storage of actual numbers
+    - GDPR compliant
+    - User data deletion on request
+    
+    **Anti-Abuse Measures:**
+    - One phone per Discord account
+    - Blacklist known bad numbers
+    - Geographic restrictions
+    - Cooldown periods
+  </Accordion>
+</AccordionGroup>
+
+### Phone Verification Benefits
+
+- **Prevents Alt Accounts**: One phone per Discord account
+- **Deters Raiders**: High barrier to entry
+- **Identity Verification**: Links to real identity
+- **Quality Control**: Higher quality member base
+
+## Discord Verification
+
+### Account Analysis
+
+Comprehensive Discord account verification:
+
+<AccordionGroup>
+  <Accordion title="Account Age">
+    **Age-Based Scoring:**
+    - Accounts < 7 days: High risk
+    - Accounts < 30 days: Medium risk  
+    - Accounts > 6 months: Low risk
+    - Accounts > 2 years: Trusted
+    
+  Server owners can configure minimums on the web portal or via future admin commands.
+  </Accordion>
+
+  <Accordion title="Profile Analysis">
+    **Profile Factors:**
+    - Custom avatar presence
+    - Profile completion
+    - Nitro subscription status
+    - Server membership count
+    - Mutual servers analysis
+    
+    **Risk Indicators:**
+    - Default avatar + new account
+    - Suspicious username patterns
+    - No mutual servers
+    - Fresh account with Nitro
+  </Accordion>
+
+  <Accordion title="Behavioral Patterns">
+    **Activity Analysis:**
+    - Message sending patterns
+    - Voice channel usage
+    - Reaction patterns
+    - Friend request behavior
+    
+    **AI-Powered Detection:**
+    - Bot-like behavior identification
+    - Coordinated account detection
+    - Unusual activity patterns
+    - Cross-server correlation
+  </Accordion>
+</AccordionGroup>
+
+### Auto-Approval Settings
+
+Configure automatic approval criteria:
+
+Configure auto-approval criteria in the dashboard where available.
+
+**Auto-Approval Factors:**
+- **Account Age**: Minimum age requirement
+- **Avatar**: Require custom avatar
+- **Nitro**: Bonus points for Nitro users
+- **Mutual Servers**: Shared server requirements
+- **Activity**: Recent activity requirements
+
+## CAPTCHA Verification
+
+### Visual Challenges
+
+Prevent automated bot registration:
+
+<AccordionGroup>
+  <Accordion title="Challenge Types">
+  **Available CAPTCHA Types (via web portal):**
+    - Image recognition
+    - Math problems
+    - Text transcription
+    - Audio challenges (accessibility)
+    - Interactive puzzles
+    
+    **Difficulty Levels:**
+    - Easy: Simple math or text
+    - Medium: Image recognition
+    - Hard: Complex puzzles
+    - Adaptive: Adjusts based on user
+  </Accordion>
+
+  <Accordion title="Accessibility">
+    **Inclusive Design:**
+    - Audio alternatives for visual challenges
+    - Screen reader compatibility
+    - High contrast options
+    - Multiple attempt allowances
+    - Alternative verification paths
+    
+    **Language Support:**
+    - Multiple language options
+    - Local character sets
+    - Cultural considerations
+    - Translation accuracy
+  </Accordion>
+
+  <Accordion title="Bot Detection">
+    **Anti-Bot Measures:**
+    - Browser fingerprinting
+    - Mouse movement analysis
+    - Timing pattern detection
+    - IP reputation checking
+    - Device analysis
+    
+    **Advanced Detection:**
+    - Headless browser identification
+    - Automation tool detection
+    - VPN/Proxy identification
+    - Behavioral analysis
+  </Accordion>
+</AccordionGroup>
+
+## Hybrid Verification
+
+### Multi-Layer Security
+
+Premium feature combining multiple verification methods:
+
+<Tabs>
+  <Tab title="Risk-Based Routing">
+    **Automatic Method Selection:**
+    - Low risk users: CAPTCHA only
+    - Medium risk users: Discord + CAPTCHA
+    - High risk users: Phone verification required
+    - Banned users: Manual review only
+    
+    **Risk Factors:**
+    - Account age and profile completion
+    - IP reputation and location
+    - Behavioral patterns
+    - Cross-server intelligence
+  </Tab>
+
+  <Tab title="Progressive Verification">
+    **Stepped Approach:**
+    1. **Initial**: CAPTCHA challenge
+    2. **Secondary**: Discord account analysis
+    3. **Final**: Phone verification (if needed)
+    4. **Review**: Manual staff review (high risk)
+    
+    **Benefits:**
+    - Reduces friction for legitimate users
+    - Increases security for suspicious accounts
+    - Balances security with user experience
+  </Tab>
+
+  <Tab title="Adaptive Security">
+    **Dynamic Adjustments:**
+    - Increase security during raids
+    - Relax requirements during quiet periods
+    - Adjust based on server activity
+    - Machine learning optimization
+    
+    **Threat Response:**
+    - Automatic raid detection
+    - Emergency lockdown mode
+    - Temporary requirement increases
+    - Real-time threat assessment
+  </Tab>
+</Tabs>
+
+## Global Ban System
+
+### Cross-Server Protection
+
+Protect your server with our global intelligence network:
+
+<AccordionGroup>
+  <Accordion title="Global Ban Database">
+    **Shared Intelligence:**
+    - Cross-server ban sharing
+    - Verified abuser database
+    - Real-time updates
+    - Community reporting
+    
+    **Ban Categories:**
+    - Verification abuse
+    - Raid participation
+    - Spam bot accounts
+    - Harassment campaigns
+    
+    **Privacy Protection:**
+    - Hashed identifiers only
+    - No personal data sharing
+    - Opt-out available
+    - GDPR compliant
+  </Accordion>
+
+  <Accordion title="Reporting System">
+    **Report Abusers:**
+    ```
+    /verification ban user:@username reason:"Verification system abuse" evidence:"Screenshots"
+    ```
+    
+    **Evidence Requirements:**
+    - Screenshots of violations
+    - Chat logs
+    - Pattern documentation
+    - Multiple server confirmation
+    
+    **Review Process:**
+    - Staff verification required
+    - Evidence review
+    - Community consensus
+    - Appeal process available
+  </Accordion>
+
+  <Accordion title="Appeal Process">
+    **User Appeals:**
+    - Automatic appeal token generation
+    - Evidence submission portal
+    - Staff review process
+    - Community input consideration
+    
+    **Appeal Criteria:**
+    - False positive identification
+    - Account compromise claims
+    - Policy misunderstanding
+    - Reformed behavior evidence
+  </Accordion>
+</AccordionGroup>
+
+## Verification Portal
+
+### Web Interface
+
+User-friendly verification experience:
+
+**Portal Features:**
+- Modern, responsive design
+- Mobile-friendly interface
+- Multiple language support
+- Accessibility compliance
+- Real-time status updates
+
+**User Journey:**
+1. Click verification button in Discord
+2. Redirected to secure web portal
+3. Complete chosen verification method
+4. Receive instant confirmation
+5. Automatic Discord role assignment
+
+### Security Features
+
+**Portal Security:**
+- HTTPS encryption
+- CSRF protection
+- Rate limiting
+- Session management
+- Audit logging
+
+**Data Protection:**
+- Minimal data collection
+- Automatic data deletion
+- Privacy policy compliance
+- User consent management
+
+## Advanced Settings
+
+### Custom Webhooks
+
+Integrate with external systems:
+
+```json
+{
+  "webhook_url": "https://your-server.com/webhook",
+  "events": [
+    "verification.completed",
+    "verification.failed", 
+    "verification.banned"
+  ],
+  "auth_token": "your-secret-token"
+}
+```
+
+### API Integration
+
+Programmatic verification management:
+
+**Available Endpoints:**
+- `GET /verification/status/{userId}`
+- `POST /verification/ban`
+- `DELETE /verification/unban`
+- `GET /verification/analytics`
+
+### Bulk Operations
+
+Manage large numbers of users:
+
+```
+/verification bulk verify role:@NewMembers
+/verification bulk unverify inactive_days:30
+/verification bulk reset server_transfer:true
+```
+
+## Analytics & Monitoring
+
+### Verification Metrics
+
+Track verification system performance:
+
+**Key Metrics:**
+- Verification completion rate
+- Method success rates
+- Average verification time
+- False positive rates
+- User satisfaction scores
+
+**Automated Reports:**
+- Daily verification summaries
+- Weekly trend analysis
+- Monthly performance reviews
+- Incident reports
+
+### Security Monitoring
+
+**Threat Detection:**
+- Unusual verification patterns
+- Coordinated attack identification
+- Bot detection rates
+- Bypass attempt monitoring
+
+**Alerting System:**
+- Real-time threat notifications
+- Staff alert mechanisms
+- Automated response triggers
+- Escalation procedures
+
+## Troubleshooting
+
+### Common Issues
+
+<AccordionGroup>
+  <Accordion title="Verification Not Working">
+    **Check These Items:**
+    - Bot permissions (Manage Roles)
+    - Role hierarchy (bot role above target roles)
+    - Channel permissions
+    - Web portal accessibility
+    
+    **Debug Commands:**
+    ```
+    /verification debug user:@username
+    /verification test method:phone
+    ```
+  </Accordion>
+
+  <Accordion title="Users Not Getting Roles">
+    **Possible Causes:**
+    - Role hierarchy issues
+    - Permission conflicts
+    - Database connectivity
+    - Rate limiting
+    
+    **Solutions:**
+    - Check role positions
+    - Verify bot permissions
+    - Test database connection
+    - Review error logs
+  </Accordion>
+
+  <Accordion title="High False Positive Rate">
+    **Adjustment Options:**
+    - Lower sensitivity settings
+    - Adjust minimum requirements
+    - Review auto-approval criteria
+    - Add manual review step
+    
+    **Configuration:**
+    ```
+    /verification sensitivity low
+    /verification manual_review enable
+    ```
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<Info>
+The verification system is continuously updated with new security features and threat intelligence. For the latest security updates and configuration options, join our [support server](https://discord.gg/velveta).
+</Info>

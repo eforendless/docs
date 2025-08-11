@@ -1,0 +1,298 @@
+---
+title: AI Features
+description: "Harness the power of artificial intelligence for content generation and server enhancement."
+icon: brain
+---
+
+## Overview
+
+Velveta integrates AI capabilities through viAI (Velveta AI): text chat and image generation. AI usage requires a premium tier with daily tokens.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="Text Generation" icon="pencil">
+    Generate creative content, responses, and announcements with advanced language models
+  </Card>
+  
+  <Card title="Image Creation" icon="image">
+    Create custom images, artwork, and graphics from simple text descriptions
+  </Card>
+</CardGroup>
+
+## Token System
+
+### How Tokens Work
+
+AI features use a token-based system. Free users cannot use AI.
+
+Check your balance and reset time anytime:
+```
+/tokens
+```
+
+### Daily Limits by Tier
+
+<Tabs>
+  <Tab title="Free">
+  Free users cannot use AI features.
+  </Tab>
+  
+  <Tab title="Gold">
+  Daily tokens: 3,000
+  - Max per text request: 500 tokens
+  - Image generation cost: 1,000 tokens
+  </Tab>
+  
+  <Tab title="Platinum">
+  Daily tokens: 7,000
+  - Max per text request: 1,000 tokens
+  - Image generation cost: 800 tokens (HD 1024×1024)
+  </Tab>
+  
+  <Tab title="Diamond">
+  Daily tokens: 15,000
+  - Max per text request: 2,000 tokens
+  - Image generation cost: 600 tokens (HD Wide 1792×1024)
+  </Tab>
+</Tabs>
+
+## Text Generation
+
+### Basic Text Generation
+
+Create content with simple prompts:
+
+```
+/viai prompt:"Write a welcome message for new members joining our gaming server"
+```
+
+**Response Example:**
+> 🎮 Welcome to the ultimate gaming haven! We're thrilled to have you join our community of passionate gamers. Here you'll find teammates for epic adventures, friends for casual chats, and a supportive crew ready to help you level up your gaming experience. Grab your favorite game role, introduce yourself, and let the fun begin!
+
+### Private replies
+
+Make responses visible only to you:
+
+```
+/viai prompt:"Summarize our rules in 3 bullet points" private:true
+```
+
+Info
+: viAI automatically balances creativity and length based on your premium tier and remaining tokens.
+
+### Use Cases
+
+<CardGroup cols={2}>
+  <Card title="Server Announcements" icon="megaphone">
+    Create engaging announcements for events, updates, and news
+    
+    ```
+  /viai prompt:"Announce our weekly game night event on Friday at 8 PM EST"
+    ```
+  </Card>
+  
+  <Card title="Welcome Messages" icon="hand-wave">
+    Generate personalized welcome messages for different server types
+    
+    ```
+  /viai prompt:"Friendly welcome for our art community server"
+    ```
+  </Card>
+  
+  <Card title="Rules & Guidelines" icon="scroll">
+    Create clear, comprehensive server rules and community guidelines
+    
+    ```
+  /viai prompt:"Server rules for family-friendly gaming community"
+    ```
+  </Card>
+  
+  <Card title="Event Descriptions" icon="calendar">
+    Write compelling descriptions for community events and activities
+    
+    ```
+  /viai prompt:"Description for movie night event in our community"
+    ```
+  </Card>
+</CardGroup>
+
+## Image Generation
+
+### Basic Image Creation
+
+Generate images from text descriptions:
+
+```
+/generate prompt:"A cute robot mascot for our Discord server, friendly and welcoming"
+```
+
+Note: Content is filtered for safety; prompts that violate policy are blocked.
+
+### Quality and sizes by tier
+
+Quality and size are chosen automatically based on your premium tier:
+
+- Gold: Standard quality, 1024×1024
+- Platinum: HD quality, 1024×1024
+- Diamond: HD quality, 1792×1024 (wide)
+
+Tip
+: Use `/tokens` to check remaining tokens and your tier.
+
+### Image Use Cases
+
+<CardGroup cols={3}>
+  <Card title="Server Branding" icon="palette">
+    Create logos, banners, and branding materials
+    
+    **Examples:**
+    - Server logos and icons
+    - Channel banners
+    - Role badges
+    - Event thumbnails
+  </Card>
+  
+  <Card title="Custom Emojis" icon="smile">
+    Generate unique emojis and reactions
+    
+    **Examples:**
+    - Custom server emojis
+    - Reaction images
+    - Sticker designs
+    - Mascot variations
+  </Card>
+  
+  <Card title="Event Graphics" icon="camera">
+    Design graphics for events and activities
+    
+    **Examples:**
+    - Tournament brackets
+    - Event announcements
+    - Achievement badges
+    - Celebration graphics
+  </Card>
+</CardGroup>
+
+## Tips for better results
+
+- Be specific: include audience, tone, and constraints.
+- Keep prompts concise to save tokens.
+- Use `/tokens` to monitor remaining balance.
+
+## Commands reference
+
+<AccordionGroup>
+  <Accordion title="/viai">
+    Chat with viAI. Provide a clear prompt; optionally set `private:true` to make the reply visible only to you.
+  </Accordion>
+  <Accordion title="/generate">
+    Generate an image. Quality and size adjust to your premium tier.
+  </Accordion>
+  <Accordion title="/tokens">
+    View daily limit, used, remaining, and reset time.
+  </Accordion>
+  <Accordion title="/premium features">
+    See what your current tier unlocks.
+  </Accordion>
+</AccordionGroup>
+
+## Best Practices
+
+### Effective Prompting
+
+<AccordionGroup>
+  <Accordion title="Clear Instructions">
+    **Good Prompts:**
+    - Be specific about desired output
+    - Include context and purpose
+    - Specify tone and style
+    - Mention target audience
+    
+    **Example:**
+    ```
+    "Write a professional announcement for our art server about a new digital art contest. Target audience is digital artists aged 16-25. Include submission deadline and prizes."
+    ```
+  </Accordion>
+
+  <Accordion title="Token Optimization">
+    **Efficient Usage:**
+    - Use appropriate max_tokens settings
+    - Batch similar requests
+    - Reuse successful prompts
+    - Monitor token consumption
+    
+    **Token-Saving Tips:**
+    - Start with shorter responses
+    - Use templates for repeated content
+    - Optimize prompt length
+    - Cache frequently used content
+  </Accordion>
+</AccordionGroup>
+
+### Content Safety
+
+**AI Safety Features:**
+- Automatic content filtering
+- NSFW detection and blocking
+- Harassment prevention
+- Misinformation detection
+
+**Server Safety Guidelines:**
+- Review AI-generated content
+- Set appropriate channel permissions
+- Train moderators on AI features
+- Monitor AI usage patterns
+
+## Troubleshooting
+
+### Common Issues
+
+<AccordionGroup>
+  <Accordion title="Token Limit Reached">
+    **Solutions:**
+    - Wait for daily reset (midnight UTC)
+    - Upgrade to higher tier
+    - Optimize token usage
+    - Use shorter prompts
+    
+    **Check Token Status:**
+    ```
+    /ai tokens
+    ```
+  </Accordion>
+
+  <Accordion title="Poor AI Responses">
+    **Improvement Tips:**
+    - Make prompts more specific
+    - Include examples in prompts
+    - Adjust temperature settings
+    - Provide more context
+    
+    **Prompt Refinement:**
+    - Add style instructions
+    - Specify output format
+    - Include constraints
+    - Test different approaches
+  </Accordion>
+
+  <Accordion title="Image Generation Fails">
+    **Common Causes:**
+    - Inappropriate content detected
+    - Token limit exceeded
+    - Server overload
+    - Invalid parameters
+    
+    **Debug Steps:**
+    - Check content policy compliance
+    - Verify token availability
+    - Simplify image prompt
+    - Try different quality settings
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<Info>
+For the latest AI updates and tips, join our support server: https://discord.gg/velveta. See also [/discord/premium](/discord/premium).
+</Info>
